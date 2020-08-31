@@ -1,1 +1,1 @@
-## Laravel - Teacher System 
+## Laravel - Teacher System

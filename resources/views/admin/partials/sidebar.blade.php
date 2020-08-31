@@ -29,69 +29,11 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_categories'))
-            <li class="nav-item">
-                <a href="#">
-                    <i class="fa fa-list"></i>
-                    <span class="menu-title">@lang('admin.categories')</span>
-                </a>
-                <ul class="menu-content">
-                    @if (auth()->user()->hasPermission('read_categories'))
-                    <li {{ request()->route()->getName() === 'admin.categories.index' ? 'class=active' : '' }}>
-                        <a href="{{ route('admin.categories.index') }}" class="nav-link">
-                            <i class="fa fa-list"></i>
-                            <span class="title">@lang('admin.categories_management')</span>
-                        </a>
-                    </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('read_subcategories'))
-                    <li {{ request()->route()->getName() === 'admin.subcategories.index' ? 'class=active' : '' }}>
-                        <a href="{{ route('admin.subcategories.index') }}" class="nav-link">
-                            <i class="fa fa-list"></i>
-                            <span class="title">@lang('admin.subcategories_management')</span>
-                        </a>
-                    </li>
-                    @endif
-                </ul>
-            </li>
-            @endif
-            @if (auth()->user()->hasPermission('read_items'))
-            <li {{ request()->route()->getName() === 'admin.items.index' ? 'class=active' : '' }}>
-                <a href="{{ route('admin.items.index') }}" class="nav-link">
-                    <i class="feather icon-layers"></i>
-                    <span class="title">@lang('admin.items_management')</span>
-                </a>
-            </li>
-            @endif
             @if (auth()->user()->hasPermission('read_locations'))
             <li {{ request()->route()->getName() === 'admin.locations.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.locations.index') }}" class="nav-link">
                     <i class="fa fa-map"></i>
                     <span class="title">@lang('admin.locations_management')</span>
-                </a>
-            </li>
-            @endif
-            @if (auth()->user()->hasPermission('read_orders'))
-            <li {{ request()->route()->getName() === 'admin.orders.index' ? 'class=active' : '' }}>
-                <a href="{{ route('admin.orders.index') }}" class="nav-link">
-                    <i class="fa fa-tasks"></i>
-                    <span class="title">@lang('admin.orders_management')</span>
-                </a>
-            </li>
-            @endif
-            @if (auth()->user()->hasPermission('read_customers'))
-            <li {{ request()->route()->getName() === 'admin.customers.index' ? 'class=active' : '' }}>
-                <a href="{{ route('admin.customers.index') }}" class="nav-link">
-                    <i class="feather icon-users"></i>
-                    <span class="title">@lang('admin.customers_management')</span>
-                </a>
-            </li>
-            @endif
-            @if (auth()->user()->hasPermission('read_promo_code'))
-            <li {{ request()->route()->getName() === 'admin.promo_code.index' ? 'class=active' : '' }}>
-                <a href="{{ route('admin.promo_code.index') }}" class="nav-link">
-                    <i class="feather icon-tag"></i>
-                    <span class="title">@lang('admin.promo_code')</span>
                 </a>
             </li>
             @endif

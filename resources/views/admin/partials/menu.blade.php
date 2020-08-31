@@ -50,7 +50,7 @@
                         </div>
                     </li>
                     {{-- Start Mails --}}
-                    <li class="dropdown dropdown-notification nav-item">
+                    {{-- <li class="dropdown dropdown-notification nav-item">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
                             <i class="ficon feather icon-mail"></i>
                             @php
@@ -104,7 +104,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                     {{-- End Mails --}}
                     {{-- Start Notifications --}}
                     <li class="dropdown dropdown-notification nav-item">
