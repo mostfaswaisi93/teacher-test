@@ -31,10 +31,6 @@ Route::group(
             Route::resource('locations', 'LocationController')->except(['show']);
             Route::get('locations/destroy/{id}', 'LocationController@destroy');
 
-            Route::resource('sliders', 'SliderController')->except(['show']);
-            Route::get('sliders/destroy/{id}', 'SliderController@destroy');
-            Route::post('sliders/updateStatus/{id}', 'SliderController@updateStatus');
-
             Route::resource('notifications', 'NotificationController')->except(['show']);
             Route::get('notifications/destroy/{id}', 'NotificationController@destroy');
             Route::post('notifications/updateStatus/{id}', 'NotificationController@updateStatus');

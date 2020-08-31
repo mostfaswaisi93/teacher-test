@@ -6,10 +6,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Halal Market - Laravel Project">
-    <meta name="keywords" content="Halal Market - Laravel Project">
+    <meta name="description" content="Laravel - Teacher System">
+    <meta name="keywords" content="Laravel - Teacher System">
     <meta name="author" content="PIXINVENT">
-    <title>@lang('admin.halal_market') | @yield('title')</title>
+    <title>{{ trans('admin.teacher') }} | @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="apple-touch-icon" href="{{ url('admin_files/app-assets/images/ico/apple-icon-120.png') }}">

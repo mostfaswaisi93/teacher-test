@@ -11,6 +11,7 @@ return [
             'cities'            => 'c,r,u,d',
             'units'             => 'c,r,u,d',
             'sliders'           => 'c,r,u,d',
+            'roles'             => 'c,r,u,d',
             'users'             => 'c,r,u,d',
             'settings'          => 'c,r,u,d',
         ],

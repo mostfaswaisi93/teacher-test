@@ -49,63 +49,6 @@
                             @endforeach
                         </div>
                     </li>
-                    {{-- Start Mails --}}
-                    {{-- <li class="dropdown dropdown-notification nav-item">
-                        <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
-                            <i class="ficon feather icon-mail"></i>
-                            @php
-                            $countContact = getContact('count');
-                            @endphp
-                            @if($countContact > 0)
-                            <span class="badge badge-pill badge-primary badge-up">{{ $countContact }}</span>
-                            @endif
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
-                            <li class="dropdown-menu-header">
-                                <div class="dropdown-header m-0 p-2">
-                                    @if($countContact > 0)
-                                    <h3 class="white">{{ getContact('count') }} @lang('admin.new_mail')</h3>
-                                    @else
-                                    <h3 class="white">0 @lang('admin.new_mail')</h3>
-                                    @endif
-                                </div>
-                            </li>
-                            @forelse(getContact() as $message)
-                            <li class="scrollable-container media-list">
-                            <a class="d-flex justify-content-between" href="{{ route('admin.contacts.show', $message->id) }}">
-                                    <div class="media d-flex align-items-start">
-                                        <div class="media-left"><i
-                                                class="feather icon-mail font-medium-5 primary"></i></div>
-                                        <div class="media-body">
-                                            <h6 class="primary media-heading"> {{ $message->title }}</h6>
-                                            <small
-                                                class="notification-text"> {{ Str::limit($message->message, 100) }}</small>
-                                        </div>
-                                        <small>
-                                            <time class="media-meta">
-                                                {{ $message->created_at->diffForHumans() }}
-                                            </time>
-                                        </small>
-                                    </div>
-                                </a>
-                            </li>
-                            @empty
-                            <li class="scrollable-container media-list">
-                                <a class="d-flex justify-content-between" href="javascript:void(0)">
-                                    <div class="media d-flex align-items-start">
-                                        @lang('admin.no_messages')
-                                    </div>
-                                </a>
-                            </li>
-                            @endforelse
-                            <li class="dropdown-menu-footer">
-                                <a class="dropdown-item p-1 text-center" href="{{ route('admin.contacts.index') }}">
-                                    @lang('admin.rall_messages')
-                                </a>
-                            </li>
-                        </ul>
-                    </li> --}}
-                    {{-- End Mails --}}
                     {{-- Start Notifications --}}
                     <li class="dropdown dropdown-notification nav-item">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
@@ -144,7 +87,7 @@
                                 <span class="user-name text-bold-600">
                                     {{ auth()->user()->name }}
                                 </span>
-                                <span class="user-status">@lang('admin.available')</span>
+                                <span class="user-status">{{ trans('admin.available') }}</span>
                             </div>
                             <span class="avatar">
                                 <img class="round"
@@ -163,7 +106,7 @@
 
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                                <i class="feather icon-power"></i> @lang('admin.logout')
+                                <i class="feather icon-power"></i> {{ trans('admin.logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
