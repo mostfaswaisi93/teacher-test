@@ -21,11 +21,11 @@
                     <span class="title">{{ trans('admin.home') }}</span>
                 </a>
             </li>
-            @if (auth()->user()->hasPermission('read_brands'))
-            <li {{ request()->route()->getName() === 'admin.brands.index' ? 'class=active' : '' }}>
-                <a href="{{ route('admin.brands.index') }}" class="nav-link">
-                    <i class="fa fa-tags"></i>
-                    <span class="title">{{ trans('admin.brands') }}</span>
+            @if (auth()->user()->hasPermission('read_banners'))
+            <li {{ request()->route()->getName() === 'admin.banners.index' ? 'class=active' : '' }}>
+                <a href="{{ route('admin.banners.index') }}" class="nav-link">
+                    <i class="fa fa-photo"></i>
+                    <span class="title">{{ trans('admin.banners') }}</span>
                 </a>
             </li>
             @endif
@@ -73,22 +73,6 @@
                         <a href="{{ route('admin.cities.index') }}" class="nav-link">
                             <i class="fa fa-building-o"></i>
                             <span class="title">{{ trans('admin.cities') }}</span>
-                        </a>
-                    </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('read_units'))
-                    <li {{ request()->route()->getName() === 'admin.units.index' ? 'class=active' : '' }}>
-                        <a href="{{ route('admin.units.index') }}" class="nav-link">
-                            <i class="feather icon-bookmark"></i>
-                            <span class="title">{{ trans('admin.units') }}</span>
-                        </a>
-                    </li>
-                    @endif
-                    @if (auth()->user()->hasPermission('read_sliders'))
-                    <li {{ request()->route()->getName() === 'admin.sliders.index' ? 'class=active' : '' }}>
-                        <a href="{{ route('admin.sliders.index') }}" class="nav-link">
-                            <i class="feather icon-sliders"></i>
-                            <span class="title">{{ trans('admin.sliders') }}</span>
                         </a>
                     </li>
                     @endif
