@@ -24,6 +24,24 @@ Route::group(
             Route::resource('reservations', 'ReservationController')->except(['show']);
             Route::get('reservations/destroy/{id}', 'ReservationController@destroy');
 
+            Route::resource('facilities', 'FacilityController')->except(['show']);
+            Route::get('facilities/destroy/{id}', 'FacilityController@destroy');
+
+            Route::resource('grades', 'GradeController')->except(['show']);
+            Route::get('grades/destroy/{id}', 'GradeController@destroy');
+
+            Route::resource('sub_grades', 'SubGradeController')->except(['show']);
+            Route::get('sub_grades/destroy/{id}', 'SubGradeController@destroy');
+
+            Route::resource('discounts', 'DiscountController')->except(['show']);
+            Route::get('discounts/destroy/{id}', 'DiscountController@destroy');
+
+            Route::resource('qualifications', 'QualificationController')->except(['show']);
+            Route::get('qualifications/destroy/{id}', 'QualificationController@destroy');
+
+            Route::resource('rates', 'RateController')->except(['show']);
+            Route::get('rates/destroy/{id}', 'RateController@destroy');
+
             Route::resource('countries', 'CountryController')->except(['show']);
             Route::get('countries/destroy/{id}', 'CountryController@destroy');
             Route::post('countries/updateStatus/{id}', 'CountryController@updateStatus');
