@@ -24,6 +24,19 @@ Route::group(
             Route::resource('reservations', 'ReservationController')->except(['show']);
             Route::get('reservations/destroy/{id}', 'ReservationController@destroy');
 
+            Route::resource('subjects', 'SubjectController')->except(['show']);
+            Route::get('subjects/destroy/{id}', 'SubjectController@destroy');
+
+            Route::resource('packages', 'PackageController')->except(['show']);
+            Route::get('packages/destroy/{id}', 'PackageController@destroy');
+
+            Route::resource('notifications', 'NotificationController')->except(['show']);
+            Route::get('notifications/destroy/{id}', 'NotificationController@destroy');
+            Route::post('notifications/updateStatus/{id}', 'NotificationController@updateStatus');
+
+            Route::resource('contacts', 'ContactController');
+            Route::get('contacts/destroy/{id}', 'ContactController@destroy');
+
             Route::resource('facilities', 'FacilityController')->except(['show']);
             Route::get('facilities/destroy/{id}', 'FacilityController@destroy');
 
@@ -42,6 +55,15 @@ Route::group(
             Route::resource('rates', 'RateController')->except(['show']);
             Route::get('rates/destroy/{id}', 'RateController@destroy');
 
+            Route::resource('edu_types', 'EduTypeController')->except(['show']);
+            Route::get('edu_types/destroy/{id}', 'EduTypeController@destroy');
+
+            Route::resource('acceptance_terms', 'PaymentMethodController')->except(['show']);
+            Route::get('acceptance_terms/destroy/{id}', 'PaymentMethodController@destroy');
+
+            Route::resource('payment_methods', 'PaymentMethodController')->except(['show']);
+            Route::get('payment_methods/destroy/{id}', 'PaymentMethodController@destroy');
+
             Route::resource('countries', 'CountryController')->except(['show']);
             Route::get('countries/destroy/{id}', 'CountryController@destroy');
             Route::post('countries/updateStatus/{id}', 'CountryController@updateStatus');
@@ -50,15 +72,9 @@ Route::group(
             Route::get('cities/destroy/{id}', 'CityController@destroy');
             Route::post('cities/updateStatus/{id}', 'CityController@updateStatus');
 
-            Route::resource('contacts', 'ContactController');
-            Route::get('contacts/destroy/{id}', 'ContactController@destroy');
 
             Route::resource('locations', 'LocationController')->except(['show']);
             Route::get('locations/destroy/{id}', 'LocationController@destroy');
-
-            Route::resource('notifications', 'NotificationController')->except(['show']);
-            Route::get('notifications/destroy/{id}', 'NotificationController@destroy');
-            Route::post('notifications/updateStatus/{id}', 'NotificationController@updateStatus');
 
             Route::get('settings', 'SettingController@index')->name('settings.index');
             Route::post('settings', 'SettingController@update')->name('settings.update');

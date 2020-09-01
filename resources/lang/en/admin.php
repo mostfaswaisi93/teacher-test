@@ -1,7 +1,6 @@
 <?php
 
 return [
-    'halal_market'              => 'Halal Market',
     'home'                      => 'Home',
     'logout'                    => 'Logout',
     'available'                 => 'Available',
