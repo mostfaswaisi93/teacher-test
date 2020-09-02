@@ -8,10 +8,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(LaratrustSeeder::class);
         $this->call(UsersTableSeeder::class);
-        // $this->call(CategoriesTableSeeder::class);
+        // $this->call(GendersTableSeeder::class);
         // $this->call(CountriesTableSeeder::class);
         // $this->call(ContactsTableSeeder::class);
-        // $this->call(SubCategoriesTableSeeder::class);
-        // $this->call(ItemsTableSeeder::class);
     }
 }
