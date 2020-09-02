@@ -2,6 +2,5 @@
 
 namespace App\Traits;
 
-trait HelperTrait{
-
-}
+trait GlobalTrait
+{ }

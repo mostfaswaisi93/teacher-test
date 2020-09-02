@@ -72,10 +72,6 @@ Route::group(
             Route::get('cities/destroy/{id}', 'CityController@destroy');
             Route::post('cities/updateStatus/{id}', 'CityController@updateStatus');
 
-
-            Route::resource('locations', 'LocationController')->except(['show']);
-            Route::get('locations/destroy/{id}', 'LocationController@destroy');
-
             Route::get('settings', 'SettingController@index')->name('settings.index');
             Route::post('settings', 'SettingController@update')->name('settings.update');
 
