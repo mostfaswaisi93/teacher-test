@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Parent extends Model
+class Parent extends BaseModel
 {
-    //
+    protected $table    = 'parents';
 }

@@ -28,15 +28,34 @@
                     <span class="title">{{ trans('admin.banners') }}</span>
                 </a>
             </li>
-            @endif
-            @if (auth()->user()->hasPermission('read_locations'))
-            <li {{ request()->route()->getName() === 'admin.locations.index' ? 'class=active' : '' }}>
-                <a href="{{ route('admin.locations.index') }}" class="nav-link">
-                    <i class="fa fa-map"></i>
-                    <span class="title">{{ trans('admin.locations_management') }}</span>
+            @if (auth()->user()->hasPermission('read_schools'))
+            <li {{ request()->route()->getName() === 'admin.schools.index' ? 'class=active' : '' }}>
+                <a href="{{ route('admin.schools.index') }}" class="nav-link">
+                    <i class="fa fa-photo"></i>
+                    <span class="title">{{ trans('admin.schools') }}</span>
                 </a>
             </li>
-            @endif
+            @if (auth()->user()->hasPermission('read_teachers'))
+            <li {{ request()->route()->getName() === 'admin.teachers.index' ? 'class=active' : '' }}>
+                <a href="{{ route('admin.teachers.index') }}" class="nav-link">
+                    <i class="fa fa-photo"></i>
+                    <span class="title">{{ trans('admin.teachers') }}</span>
+                </a>
+            </li>
+            @if (auth()->user()->hasPermission('read_parents'))
+            <li {{ request()->route()->getName() === 'admin.parents.index' ? 'class=active' : '' }}>
+                <a href="{{ route('admin.parents.index') }}" class="nav-link">
+                    <i class="fa fa-photo"></i>
+                    <span class="title">{{ trans('admin.parents') }}</span>
+                </a>
+            </li>
+            @if (auth()->user()->hasPermission('read_students'))
+            <li {{ request()->route()->getName() === 'admin.students.index' ? 'class=active' : '' }}>
+                <a href="{{ route('admin.students.index') }}" class="nav-link">
+                    <i class="fa fa-photo"></i>
+                    <span class="title">{{ trans('admin.students') }}</span>
+                </a>
+            </li>
             @if (auth()->user()->hasPermission('read_notifications'))
             <li {{ request()->route()->getName() === 'admin.notifications.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.notifications.index') }}" class="nav-link">
