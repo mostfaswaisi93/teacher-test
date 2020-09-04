@@ -16,6 +16,7 @@ class CreateEduTypesTable extends Migration
         Schema::create('edu_types', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

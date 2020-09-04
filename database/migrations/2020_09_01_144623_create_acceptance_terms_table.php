@@ -16,6 +16,7 @@ class CreateAcceptanceTermsTable extends Migration
         Schema::create('acceptance_terms', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

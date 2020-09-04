@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 02, 2020 at 03:11 PM
+-- Generation Time: Sep 04, 2020 at 05:32 PM
 -- Server version: 10.5.4-MariaDB-log
 -- PHP Version: 7.4.8
 
@@ -30,7 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `acceptance_terms` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -42,7 +43,8 @@ CREATE TABLE `acceptance_terms` (
 CREATE TABLE `banners` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -54,7 +56,8 @@ CREATE TABLE `banners` (
 CREATE TABLE `cities` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -66,7 +69,8 @@ CREATE TABLE `cities` (
 CREATE TABLE `contacts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -78,7 +82,8 @@ CREATE TABLE `contacts` (
 CREATE TABLE `countries` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -90,7 +95,8 @@ CREATE TABLE `countries` (
 CREATE TABLE `discounts` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -102,7 +108,8 @@ CREATE TABLE `discounts` (
 CREATE TABLE `edu_types` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -114,7 +121,8 @@ CREATE TABLE `edu_types` (
 CREATE TABLE `facilities` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -141,7 +149,8 @@ CREATE TABLE `failed_jobs` (
 CREATE TABLE `genders` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -153,7 +162,8 @@ CREATE TABLE `genders` (
 CREATE TABLE `grades` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -210,7 +220,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `notifications` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -222,7 +233,8 @@ CREATE TABLE `notifications` (
 CREATE TABLE `packages` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -234,7 +246,8 @@ CREATE TABLE `packages` (
 CREATE TABLE `parents` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -258,7 +271,8 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `payment_methods` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -281,70 +295,70 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'create_banners', 'Create Banners', 'Create Banners', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(2, 'read_banners', 'Read Banners', 'Read Banners', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(3, 'update_banners', 'Update Banners', 'Update Banners', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(4, 'delete_banners', 'Delete Banners', 'Delete Banners', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(5, 'create_schools', 'Create Schools', 'Create Schools', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(6, 'read_schools', 'Read Schools', 'Read Schools', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(7, 'update_schools', 'Update Schools', 'Update Schools', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(8, 'delete_schools', 'Delete Schools', 'Delete Schools', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(9, 'create_teachers', 'Create Teachers', 'Create Teachers', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(10, 'read_teachers', 'Read Teachers', 'Read Teachers', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(11, 'update_teachers', 'Update Teachers', 'Update Teachers', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(12, 'delete_teachers', 'Delete Teachers', 'Delete Teachers', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(13, 'create_parents', 'Create Parents', 'Create Parents', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(14, 'read_parents', 'Read Parents', 'Read Parents', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(15, 'update_parents', 'Update Parents', 'Update Parents', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(16, 'delete_parents', 'Delete Parents', 'Delete Parents', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(17, 'create_students', 'Create Students', 'Create Students', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(18, 'read_students', 'Read Students', 'Read Students', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(19, 'update_students', 'Update Students', 'Update Students', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(20, 'delete_students', 'Delete Students', 'Delete Students', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(21, 'create_reservations', 'Create Reservations', 'Create Reservations', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(22, 'read_reservations', 'Read Reservations', 'Read Reservations', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(23, 'update_reservations', 'Update Reservations', 'Update Reservations', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(24, 'delete_reservations', 'Delete Reservations', 'Delete Reservations', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(25, 'create_subjects', 'Create Subjects', 'Create Subjects', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(26, 'read_subjects', 'Read Subjects', 'Read Subjects', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(27, 'update_subjects', 'Update Subjects', 'Update Subjects', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(28, 'delete_subjects', 'Delete Subjects', 'Delete Subjects', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(29, 'create_packages', 'Create Packages', 'Create Packages', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(30, 'read_packages', 'Read Packages', 'Read Packages', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(31, 'update_packages', 'Update Packages', 'Update Packages', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(32, 'delete_packages', 'Delete Packages', 'Delete Packages', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(33, 'create_notifications', 'Create Notifications', 'Create Notifications', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(34, 'read_notifications', 'Read Notifications', 'Read Notifications', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(35, 'update_notifications', 'Update Notifications', 'Update Notifications', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(36, 'delete_notifications', 'Delete Notifications', 'Delete Notifications', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(37, 'create_contacts', 'Create Contacts', 'Create Contacts', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(38, 'read_contacts', 'Read Contacts', 'Read Contacts', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(39, 'update_contacts', 'Update Contacts', 'Update Contacts', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(40, 'delete_contacts', 'Delete Contacts', 'Delete Contacts', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(41, 'create_locations', 'Create Locations', 'Create Locations', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(42, 'read_locations', 'Read Locations', 'Read Locations', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(43, 'update_locations', 'Update Locations', 'Update Locations', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(44, 'delete_locations', 'Delete Locations', 'Delete Locations', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(45, 'create_countries', 'Create Countries', 'Create Countries', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(46, 'read_countries', 'Read Countries', 'Read Countries', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(47, 'update_countries', 'Update Countries', 'Update Countries', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(48, 'delete_countries', 'Delete Countries', 'Delete Countries', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(49, 'create_cities', 'Create Cities', 'Create Cities', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(50, 'read_cities', 'Read Cities', 'Read Cities', '2020-09-02 12:11:27', '2020-09-02 12:11:27'),
-(51, 'update_cities', 'Update Cities', 'Update Cities', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(52, 'delete_cities', 'Delete Cities', 'Delete Cities', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(53, 'create_roles', 'Create Roles', 'Create Roles', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(54, 'read_roles', 'Read Roles', 'Read Roles', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(55, 'update_roles', 'Update Roles', 'Update Roles', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(56, 'delete_roles', 'Delete Roles', 'Delete Roles', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(57, 'create_users', 'Create Users', 'Create Users', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(58, 'read_users', 'Read Users', 'Read Users', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(59, 'update_users', 'Update Users', 'Update Users', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(60, 'delete_users', 'Delete Users', 'Delete Users', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(61, 'create_settings', 'Create Settings', 'Create Settings', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(62, 'read_settings', 'Read Settings', 'Read Settings', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(63, 'update_settings', 'Update Settings', 'Update Settings', '2020-09-02 12:11:28', '2020-09-02 12:11:28'),
-(64, 'delete_settings', 'Delete Settings', 'Delete Settings', '2020-09-02 12:11:28', '2020-09-02 12:11:28');
+(1, 'create_banners', 'Create Banners', 'Create Banners', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
+(2, 'read_banners', 'Read Banners', 'Read Banners', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
+(3, 'update_banners', 'Update Banners', 'Update Banners', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
+(4, 'delete_banners', 'Delete Banners', 'Delete Banners', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
+(5, 'create_schools', 'Create Schools', 'Create Schools', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
+(6, 'read_schools', 'Read Schools', 'Read Schools', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
+(7, 'update_schools', 'Update Schools', 'Update Schools', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(8, 'delete_schools', 'Delete Schools', 'Delete Schools', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(9, 'create_teachers', 'Create Teachers', 'Create Teachers', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(10, 'read_teachers', 'Read Teachers', 'Read Teachers', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(11, 'update_teachers', 'Update Teachers', 'Update Teachers', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(12, 'delete_teachers', 'Delete Teachers', 'Delete Teachers', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(13, 'create_parents', 'Create Parents', 'Create Parents', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(14, 'read_parents', 'Read Parents', 'Read Parents', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(15, 'update_parents', 'Update Parents', 'Update Parents', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(16, 'delete_parents', 'Delete Parents', 'Delete Parents', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(17, 'create_students', 'Create Students', 'Create Students', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(18, 'read_students', 'Read Students', 'Read Students', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(19, 'update_students', 'Update Students', 'Update Students', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(20, 'delete_students', 'Delete Students', 'Delete Students', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(21, 'create_reservations', 'Create Reservations', 'Create Reservations', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(22, 'read_reservations', 'Read Reservations', 'Read Reservations', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(23, 'update_reservations', 'Update Reservations', 'Update Reservations', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(24, 'delete_reservations', 'Delete Reservations', 'Delete Reservations', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(25, 'create_subjects', 'Create Subjects', 'Create Subjects', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(26, 'read_subjects', 'Read Subjects', 'Read Subjects', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
+(27, 'update_subjects', 'Update Subjects', 'Update Subjects', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(28, 'delete_subjects', 'Delete Subjects', 'Delete Subjects', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(29, 'create_packages', 'Create Packages', 'Create Packages', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(30, 'read_packages', 'Read Packages', 'Read Packages', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(31, 'update_packages', 'Update Packages', 'Update Packages', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(32, 'delete_packages', 'Delete Packages', 'Delete Packages', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(33, 'create_notifications', 'Create Notifications', 'Create Notifications', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(34, 'read_notifications', 'Read Notifications', 'Read Notifications', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(35, 'update_notifications', 'Update Notifications', 'Update Notifications', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(36, 'delete_notifications', 'Delete Notifications', 'Delete Notifications', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(37, 'create_contacts', 'Create Contacts', 'Create Contacts', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(38, 'read_contacts', 'Read Contacts', 'Read Contacts', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(39, 'update_contacts', 'Update Contacts', 'Update Contacts', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(40, 'delete_contacts', 'Delete Contacts', 'Delete Contacts', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(41, 'create_locations', 'Create Locations', 'Create Locations', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(42, 'read_locations', 'Read Locations', 'Read Locations', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(43, 'update_locations', 'Update Locations', 'Update Locations', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(44, 'delete_locations', 'Delete Locations', 'Delete Locations', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(45, 'create_countries', 'Create Countries', 'Create Countries', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(46, 'read_countries', 'Read Countries', 'Read Countries', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(47, 'update_countries', 'Update Countries', 'Update Countries', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(48, 'delete_countries', 'Delete Countries', 'Delete Countries', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(49, 'create_cities', 'Create Cities', 'Create Cities', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(50, 'read_cities', 'Read Cities', 'Read Cities', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(51, 'update_cities', 'Update Cities', 'Update Cities', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(52, 'delete_cities', 'Delete Cities', 'Delete Cities', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(53, 'create_roles', 'Create Roles', 'Create Roles', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(54, 'read_roles', 'Read Roles', 'Read Roles', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
+(55, 'update_roles', 'Update Roles', 'Update Roles', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
+(56, 'delete_roles', 'Delete Roles', 'Delete Roles', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
+(57, 'create_users', 'Create Users', 'Create Users', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
+(58, 'read_users', 'Read Users', 'Read Users', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
+(59, 'update_users', 'Update Users', 'Update Users', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
+(60, 'delete_users', 'Delete Users', 'Delete Users', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
+(61, 'create_settings', 'Create Settings', 'Create Settings', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
+(62, 'read_settings', 'Read Settings', 'Read Settings', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
+(63, 'update_settings', 'Update Settings', 'Update Settings', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
+(64, 'delete_settings', 'Delete Settings', 'Delete Settings', '2020-09-04 14:31:48', '2020-09-04 14:31:48');
 
 -- --------------------------------------------------------
 
@@ -448,7 +462,8 @@ CREATE TABLE `permission_user` (
 CREATE TABLE `qualifications` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -460,7 +475,8 @@ CREATE TABLE `qualifications` (
 CREATE TABLE `rates` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -472,7 +488,8 @@ CREATE TABLE `rates` (
 CREATE TABLE `reservations` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -495,8 +512,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'super_admin', 'Super Admin', 'Super Admin', '2020-09-02 12:11:26', '2020-09-02 12:11:26'),
-(2, 'admin', 'Admin', 'Admin', '2020-09-02 12:11:30', '2020-09-02 12:11:30');
+(1, 'super_admin', 'Super Admin', 'Super Admin', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
+(2, 'admin', 'Admin', 'Admin', '2020-09-04 14:31:50', '2020-09-04 14:31:50');
 
 -- --------------------------------------------------------
 
@@ -526,7 +543,8 @@ INSERT INTO `role_user` (`role_id`, `user_id`, `user_type`) VALUES
 CREATE TABLE `schools` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -538,7 +556,8 @@ CREATE TABLE `schools` (
 CREATE TABLE `settings` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -550,7 +569,8 @@ CREATE TABLE `settings` (
 CREATE TABLE `students` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -562,7 +582,8 @@ CREATE TABLE `students` (
 CREATE TABLE `subjects` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -574,7 +595,8 @@ CREATE TABLE `subjects` (
 CREATE TABLE `sub_grades` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -586,7 +608,8 @@ CREATE TABLE `sub_grades` (
 CREATE TABLE `teachers` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -612,7 +635,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'super', 'super@admin.com', NULL, '$2y$10$aqQx4oUpgcmZKi1/q3Hx0uqtLF3MYBL5aS9hJV29srLE1zd3Juxwu', NULL, '2020-09-01 21:00:00', '2020-09-01 21:00:00', NULL);
+(1, 'super', 'super@admin.com', NULL, '$2y$10$pJ1BZAjn8d5RikYjLvHqCeShVtB66GtSpgxukzxZkowIG3KtfpxY6', NULL, '2020-09-03 21:00:00', '2020-09-03 21:00:00', NULL);
 
 --
 -- Indexes for dumped tables
