@@ -39,6 +39,7 @@ Route::group(
 
             Route::resource('facilities', 'FacilityController')->except(['show']);
             Route::get('facilities/destroy/{id}', 'FacilityController@destroy');
+            Route::post('facilities/updateStatus/{id}', 'FacilityController@updateStatus');
 
             Route::resource('grades', 'GradeController')->except(['show']);
             Route::get('grades/destroy/{id}', 'GradeController@destroy');

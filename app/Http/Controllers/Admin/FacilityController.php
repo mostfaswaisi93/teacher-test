@@ -53,13 +53,13 @@ class FacilityController extends Controller
         $request->validate($rules);
         $request_data = $request->all();
 
-        if ($request->image_ar) {
-            Image::make($request->image_ar)
+        if ($request->image) {
+            Image::make($request->image)
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
-                ->save(public_path('uploads/facility_images/ar/' . $request->image_ar->hashName()));
-            $request_data['image_ar'] = $request->image_ar->hashName();
+                ->save(public_path('uploads/facility_images/' . $request->image->hashName()));
+            $request_data['image'] = $request->image->hashName();
         }
 
         Facility::create($request_data);
@@ -83,16 +83,16 @@ class FacilityController extends Controller
         $request->validate($rules);
         $request_data = $request->all();
 
-        if ($request->image_ar) {
-            if ($facility->image_ar != 'default.png') {
-                Storage::disk('public_uploads')->delete('/facility_images/ar/' . $facility->image_ar);
+        if ($request->image) {
+            if ($facility->image != 'default.png') {
+                Storage::disk('public_uploads')->delete('/facility_images/' . $facility->image);
             }
-            Image::make($request->image_ar)
+            Image::make($request->image)
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
-                ->save(public_path('uploads/facility_images/ar/' . $request->image_ar->hashName()));
-            $request_data['image_ar'] = $request->image_ar->hashName();
+                ->save(public_path('uploads/facility_images/' . $request->image->hashName()));
+            $request_data['image'] = $request->image->hashName();
         }
 
         $facility->update($request_data);
@@ -103,8 +103,8 @@ class FacilityController extends Controller
     public function destroy($id)
     {
         $facility = Facility::findOrFail($id);
-        if ($facility->image_ar != 'default.png') {
-            Storage::disk('public_uploads')->delete('/facility_images/ar/' . $facility->image_ar);
+        if ($facility->image != 'default.png') {
+            Storage::disk('public_uploads')->delete('/facility_images/' . $facility->image);
         }
         $facility->delete();
     }
