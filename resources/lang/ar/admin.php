@@ -124,6 +124,7 @@ return [
     'all_banners'               => 'كل البنرات التعريفية',
     'all_countries'             => 'كل الدول',
     'all_cities'                => 'كل المدن',
+
     'permissions'               => 'الصلاحيات',
     'name'                      => 'الاسم',
     'username'                  => 'اسم المستخدم',
@@ -136,7 +137,6 @@ return [
     'price'                     => 'السعر',
 
     'all_rights'                => 'جميع الحقوق محفوظة',
-    'new_order'                 => 'طلب جديد',
     'new_mail'                  => 'رسالة جديدة',
     'save_print'                => 'حفظ وطباعة',
 
