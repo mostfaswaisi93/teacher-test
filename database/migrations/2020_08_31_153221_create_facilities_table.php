@@ -15,6 +15,8 @@ class CreateFacilitiesTable extends Migration
     {
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
+            $table->integer('active')->default(1);
+            $table->string('image')->default('default.png');
             $table->timestamps();
             $table->softDeletes();
         });

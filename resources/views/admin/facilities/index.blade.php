@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.brands_management') @endsection
+@section('title') @lang('admin.facilities_management') @endsection
 
 @section('content')
 
@@ -7,13 +7,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.brands_management')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.facilities_management')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.brands_management')</li>
+                        <li class="breadcrumb-item active">@lang('admin.facilities_management')</li>
                     </ol>
                 </div>
             </div>
@@ -25,13 +25,13 @@
     <section>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.brands_management')</h4>
+                <h4 class="card-title">@lang('admin.facilities_management')</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
                     <div class="btn-group">
-                        @if (auth()->user()->hasPermission('create_brands'))
-                        <a href="{{ route('admin.brands.create') }}">
+                        @if (auth()->user()->hasPermission('create_facilities'))
+                        <a href="{{ route('admin.facilities.create') }}">
                             <button class="btn btn-primary mb-2">
                                 <i class="feather icon-plus mr-25"></i>
                                 @lang('admin.create_brand')
@@ -81,7 +81,7 @@
             responsive: true,
             order: [[ 2, "desc" ]],
             ajax: {
-                url: "{{ route('admin.brands.index') }}",
+                url: "{{ route('admin.facilities.index') }}",
             },
             columns: [{
                     render: function(data, type, row, meta) {
@@ -134,7 +134,7 @@
         }).then(function(result){
             if(result.value){
                 $.ajax({
-                    url:"brands/destroy/" + brand_id,
+                    url:"facilities/destroy/" + brand_id,
                     success: function(data){
                         console.log(data);
                         $('#data-table').DataTable().ajax.reload();
@@ -160,7 +160,7 @@
             toastr.error('{{ trans('admin.status_not_changed') }}!');
         }
         $.ajax({
-            url:"brands/updateStatus/"+brand_id+"?active="+status_brand,
+            url:"facilities/updateStatus/"+brand_id+"?active="+status_brand,
             headers: {
                 'X-CSRF-Token': "{{ csrf_token() }}"
             },

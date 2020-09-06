@@ -14,7 +14,7 @@
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.brands.index') }}">@lang('admin.brands_management')</a>
+                            <a href="{{ route('admin.facilities.index') }}">@lang('admin.facilities_management')</a>
                         </li>
                         <li class="breadcrumb-item active">@lang('admin.create_brand')</li>
                     </ol>
@@ -38,7 +38,7 @@
                     <div class="card-content">
                         <div class="card-body">
                             @include('partials._errors')
-                            <form action="{{ route('admin.brands.store') }}" method="post"
+                            <form action="{{ route('admin.facilities.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')

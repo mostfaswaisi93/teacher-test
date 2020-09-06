@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 04, 2020 at 05:32 PM
+-- Generation Time: Sep 06, 2020 at 12:55 PM
 -- Server version: 10.5.4-MariaDB-log
 -- PHP Version: 7.4.8
 
@@ -120,9 +120,24 @@ CREATE TABLE `edu_types` (
 
 CREATE TABLE `facilities` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `active` int(11) NOT NULL DEFAULT 1,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default.png',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `facility_translations`
+--
+
+CREATE TABLE `facility_translations` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `facility_id` int(10) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `locale` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -209,7 +224,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (24, '2020_09_01_144200_create_edu_types_table', 1),
 (25, '2020_09_01_144504_create_payment_methods_table', 1),
 (26, '2020_09_01_144623_create_acceptance_terms_table', 1),
-(27, '2020_09_02_115720_create_genders_table', 1);
+(27, '2020_09_02_115720_create_genders_table', 1),
+(28, '2020_09_06_123919_create_facility_translations_table', 1);
 
 -- --------------------------------------------------------
 
@@ -295,70 +311,102 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'create_banners', 'Create Banners', 'Create Banners', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
-(2, 'read_banners', 'Read Banners', 'Read Banners', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
-(3, 'update_banners', 'Update Banners', 'Update Banners', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
-(4, 'delete_banners', 'Delete Banners', 'Delete Banners', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
-(5, 'create_schools', 'Create Schools', 'Create Schools', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
-(6, 'read_schools', 'Read Schools', 'Read Schools', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
-(7, 'update_schools', 'Update Schools', 'Update Schools', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(8, 'delete_schools', 'Delete Schools', 'Delete Schools', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(9, 'create_teachers', 'Create Teachers', 'Create Teachers', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(10, 'read_teachers', 'Read Teachers', 'Read Teachers', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(11, 'update_teachers', 'Update Teachers', 'Update Teachers', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(12, 'delete_teachers', 'Delete Teachers', 'Delete Teachers', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(13, 'create_parents', 'Create Parents', 'Create Parents', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(14, 'read_parents', 'Read Parents', 'Read Parents', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(15, 'update_parents', 'Update Parents', 'Update Parents', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(16, 'delete_parents', 'Delete Parents', 'Delete Parents', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(17, 'create_students', 'Create Students', 'Create Students', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(18, 'read_students', 'Read Students', 'Read Students', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(19, 'update_students', 'Update Students', 'Update Students', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(20, 'delete_students', 'Delete Students', 'Delete Students', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(21, 'create_reservations', 'Create Reservations', 'Create Reservations', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(22, 'read_reservations', 'Read Reservations', 'Read Reservations', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(23, 'update_reservations', 'Update Reservations', 'Update Reservations', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(24, 'delete_reservations', 'Delete Reservations', 'Delete Reservations', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(25, 'create_subjects', 'Create Subjects', 'Create Subjects', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(26, 'read_subjects', 'Read Subjects', 'Read Subjects', '2020-09-04 14:31:46', '2020-09-04 14:31:46'),
-(27, 'update_subjects', 'Update Subjects', 'Update Subjects', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(28, 'delete_subjects', 'Delete Subjects', 'Delete Subjects', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(29, 'create_packages', 'Create Packages', 'Create Packages', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(30, 'read_packages', 'Read Packages', 'Read Packages', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(31, 'update_packages', 'Update Packages', 'Update Packages', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(32, 'delete_packages', 'Delete Packages', 'Delete Packages', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(33, 'create_notifications', 'Create Notifications', 'Create Notifications', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(34, 'read_notifications', 'Read Notifications', 'Read Notifications', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(35, 'update_notifications', 'Update Notifications', 'Update Notifications', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(36, 'delete_notifications', 'Delete Notifications', 'Delete Notifications', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(37, 'create_contacts', 'Create Contacts', 'Create Contacts', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(38, 'read_contacts', 'Read Contacts', 'Read Contacts', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(39, 'update_contacts', 'Update Contacts', 'Update Contacts', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(40, 'delete_contacts', 'Delete Contacts', 'Delete Contacts', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(41, 'create_locations', 'Create Locations', 'Create Locations', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(42, 'read_locations', 'Read Locations', 'Read Locations', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(43, 'update_locations', 'Update Locations', 'Update Locations', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(44, 'delete_locations', 'Delete Locations', 'Delete Locations', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(45, 'create_countries', 'Create Countries', 'Create Countries', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(46, 'read_countries', 'Read Countries', 'Read Countries', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(47, 'update_countries', 'Update Countries', 'Update Countries', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(48, 'delete_countries', 'Delete Countries', 'Delete Countries', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(49, 'create_cities', 'Create Cities', 'Create Cities', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(50, 'read_cities', 'Read Cities', 'Read Cities', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(51, 'update_cities', 'Update Cities', 'Update Cities', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(52, 'delete_cities', 'Delete Cities', 'Delete Cities', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(53, 'create_roles', 'Create Roles', 'Create Roles', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(54, 'read_roles', 'Read Roles', 'Read Roles', '2020-09-04 14:31:47', '2020-09-04 14:31:47'),
-(55, 'update_roles', 'Update Roles', 'Update Roles', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
-(56, 'delete_roles', 'Delete Roles', 'Delete Roles', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
-(57, 'create_users', 'Create Users', 'Create Users', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
-(58, 'read_users', 'Read Users', 'Read Users', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
-(59, 'update_users', 'Update Users', 'Update Users', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
-(60, 'delete_users', 'Delete Users', 'Delete Users', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
-(61, 'create_settings', 'Create Settings', 'Create Settings', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
-(62, 'read_settings', 'Read Settings', 'Read Settings', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
-(63, 'update_settings', 'Update Settings', 'Update Settings', '2020-09-04 14:31:48', '2020-09-04 14:31:48'),
-(64, 'delete_settings', 'Delete Settings', 'Delete Settings', '2020-09-04 14:31:48', '2020-09-04 14:31:48');
+(1, 'create_banners', 'Create Banners', 'Create Banners', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(2, 'read_banners', 'Read Banners', 'Read Banners', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(3, 'update_banners', 'Update Banners', 'Update Banners', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(4, 'delete_banners', 'Delete Banners', 'Delete Banners', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(5, 'create_schools', 'Create Schools', 'Create Schools', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(6, 'read_schools', 'Read Schools', 'Read Schools', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(7, 'update_schools', 'Update Schools', 'Update Schools', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(8, 'delete_schools', 'Delete Schools', 'Delete Schools', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(9, 'create_teachers', 'Create Teachers', 'Create Teachers', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(10, 'read_teachers', 'Read Teachers', 'Read Teachers', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(11, 'update_teachers', 'Update Teachers', 'Update Teachers', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(12, 'delete_teachers', 'Delete Teachers', 'Delete Teachers', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(13, 'create_parents', 'Create Parents', 'Create Parents', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(14, 'read_parents', 'Read Parents', 'Read Parents', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(15, 'update_parents', 'Update Parents', 'Update Parents', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(16, 'delete_parents', 'Delete Parents', 'Delete Parents', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(17, 'create_students', 'Create Students', 'Create Students', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(18, 'read_students', 'Read Students', 'Read Students', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(19, 'update_students', 'Update Students', 'Update Students', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(20, 'delete_students', 'Delete Students', 'Delete Students', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(21, 'create_reservations', 'Create Reservations', 'Create Reservations', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(22, 'read_reservations', 'Read Reservations', 'Read Reservations', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(23, 'update_reservations', 'Update Reservations', 'Update Reservations', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(24, 'delete_reservations', 'Delete Reservations', 'Delete Reservations', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(25, 'create_subjects', 'Create Subjects', 'Create Subjects', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(26, 'read_subjects', 'Read Subjects', 'Read Subjects', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(27, 'update_subjects', 'Update Subjects', 'Update Subjects', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(28, 'delete_subjects', 'Delete Subjects', 'Delete Subjects', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(29, 'create_packages', 'Create Packages', 'Create Packages', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(30, 'read_packages', 'Read Packages', 'Read Packages', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(31, 'update_packages', 'Update Packages', 'Update Packages', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(32, 'delete_packages', 'Delete Packages', 'Delete Packages', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(33, 'create_notifications', 'Create Notifications', 'Create Notifications', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(34, 'read_notifications', 'Read Notifications', 'Read Notifications', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(35, 'update_notifications', 'Update Notifications', 'Update Notifications', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(36, 'delete_notifications', 'Delete Notifications', 'Delete Notifications', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(37, 'create_contacts', 'Create Contacts', 'Create Contacts', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(38, 'read_contacts', 'Read Contacts', 'Read Contacts', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(39, 'update_contacts', 'Update Contacts', 'Update Contacts', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(40, 'delete_contacts', 'Delete Contacts', 'Delete Contacts', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(41, 'create_facilities', 'Create Facilities', 'Create Facilities', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(42, 'read_facilities', 'Read Facilities', 'Read Facilities', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(43, 'update_facilities', 'Update Facilities', 'Update Facilities', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(44, 'delete_facilities', 'Delete Facilities', 'Delete Facilities', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(45, 'create_grades', 'Create Grades', 'Create Grades', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(46, 'read_grades', 'Read Grades', 'Read Grades', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(47, 'update_grades', 'Update Grades', 'Update Grades', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(48, 'delete_grades', 'Delete Grades', 'Delete Grades', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(49, 'create_sub_grades', 'Create Sub_grades', 'Create Sub_grades', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(50, 'read_sub_grades', 'Read Sub_grades', 'Read Sub_grades', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(51, 'update_sub_grades', 'Update Sub_grades', 'Update Sub_grades', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(52, 'delete_sub_grades', 'Delete Sub_grades', 'Delete Sub_grades', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(53, 'create_countries', 'Create Countries', 'Create Countries', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(54, 'read_countries', 'Read Countries', 'Read Countries', '2020-09-06 09:54:40', '2020-09-06 09:54:40'),
+(55, 'update_countries', 'Update Countries', 'Update Countries', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(56, 'delete_countries', 'Delete Countries', 'Delete Countries', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(57, 'create_cities', 'Create Cities', 'Create Cities', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(58, 'read_cities', 'Read Cities', 'Read Cities', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(59, 'update_cities', 'Update Cities', 'Update Cities', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(60, 'delete_cities', 'Delete Cities', 'Delete Cities', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(61, 'create_payment_methods', 'Create Payment_methods', 'Create Payment_methods', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(62, 'read_payment_methods', 'Read Payment_methods', 'Read Payment_methods', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(63, 'update_payment_methods', 'Update Payment_methods', 'Update Payment_methods', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(64, 'delete_payment_methods', 'Delete Payment_methods', 'Delete Payment_methods', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(65, 'create_edu_types', 'Create Edu_types', 'Create Edu_types', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(66, 'read_edu_types', 'Read Edu_types', 'Read Edu_types', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(67, 'update_edu_types', 'Update Edu_types', 'Update Edu_types', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(68, 'delete_edu_types', 'Delete Edu_types', 'Delete Edu_types', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(69, 'create_discounts', 'Create Discounts', 'Create Discounts', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(70, 'read_discounts', 'Read Discounts', 'Read Discounts', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(71, 'update_discounts', 'Update Discounts', 'Update Discounts', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(72, 'delete_discounts', 'Delete Discounts', 'Delete Discounts', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(73, 'create_acceptance_terms', 'Create Acceptance_terms', 'Create Acceptance_terms', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(74, 'read_acceptance_terms', 'Read Acceptance_terms', 'Read Acceptance_terms', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(75, 'update_acceptance_terms', 'Update Acceptance_terms', 'Update Acceptance_terms', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(76, 'delete_acceptance_terms', 'Delete Acceptance_terms', 'Delete Acceptance_terms', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(77, 'create_rates', 'Create Rates', 'Create Rates', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(78, 'read_rates', 'Read Rates', 'Read Rates', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(79, 'update_rates', 'Update Rates', 'Update Rates', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(80, 'delete_rates', 'Delete Rates', 'Delete Rates', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(81, 'create_qualifications', 'Create Qualifications', 'Create Qualifications', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(82, 'read_qualifications', 'Read Qualifications', 'Read Qualifications', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(83, 'update_qualifications', 'Update Qualifications', 'Update Qualifications', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(84, 'delete_qualifications', 'Delete Qualifications', 'Delete Qualifications', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(85, 'create_users', 'Create Users', 'Create Users', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(86, 'read_users', 'Read Users', 'Read Users', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(87, 'update_users', 'Update Users', 'Update Users', '2020-09-06 09:54:41', '2020-09-06 09:54:41'),
+(88, 'delete_users', 'Delete Users', 'Delete Users', '2020-09-06 09:54:42', '2020-09-06 09:54:42'),
+(89, 'create_roles', 'Create Roles', 'Create Roles', '2020-09-06 09:54:42', '2020-09-06 09:54:42'),
+(90, 'read_roles', 'Read Roles', 'Read Roles', '2020-09-06 09:54:42', '2020-09-06 09:54:42'),
+(91, 'update_roles', 'Update Roles', 'Update Roles', '2020-09-06 09:54:42', '2020-09-06 09:54:42'),
+(92, 'delete_roles', 'Delete Roles', 'Delete Roles', '2020-09-06 09:54:42', '2020-09-06 09:54:42'),
+(93, 'create_settings', 'Create Settings', 'Create Settings', '2020-09-06 09:54:42', '2020-09-06 09:54:42'),
+(94, 'read_settings', 'Read Settings', 'Read Settings', '2020-09-06 09:54:42', '2020-09-06 09:54:42'),
+(95, 'update_settings', 'Update Settings', 'Update Settings', '2020-09-06 09:54:42', '2020-09-06 09:54:42'),
+(96, 'delete_settings', 'Delete Settings', 'Delete Settings', '2020-09-06 09:54:42', '2020-09-06 09:54:42');
 
 -- --------------------------------------------------------
 
@@ -439,7 +487,39 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (61, 1),
 (62, 1),
 (63, 1),
-(64, 1);
+(64, 1),
+(65, 1),
+(66, 1),
+(67, 1),
+(68, 1),
+(69, 1),
+(70, 1),
+(71, 1),
+(72, 1),
+(73, 1),
+(74, 1),
+(75, 1),
+(76, 1),
+(77, 1),
+(78, 1),
+(79, 1),
+(80, 1),
+(81, 1),
+(82, 1),
+(83, 1),
+(84, 1),
+(85, 1),
+(86, 1),
+(87, 1),
+(88, 1),
+(89, 1),
+(90, 1),
+(91, 1),
+(92, 1),
+(93, 1),
+(94, 1),
+(95, 1),
+(96, 1);
 
 -- --------------------------------------------------------
 
@@ -512,8 +592,8 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'super_admin', 'Super Admin', 'Super Admin', '2020-09-04 14:31:45', '2020-09-04 14:31:45'),
-(2, 'admin', 'Admin', 'Admin', '2020-09-04 14:31:50', '2020-09-04 14:31:50');
+(1, 'super_admin', 'Super Admin', 'Super Admin', '2020-09-06 09:54:39', '2020-09-06 09:54:39'),
+(2, 'admin', 'Admin', 'Admin', '2020-09-06 09:54:44', '2020-09-06 09:54:44');
 
 -- --------------------------------------------------------
 
@@ -635,7 +715,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'super', 'super@admin.com', NULL, '$2y$10$pJ1BZAjn8d5RikYjLvHqCeShVtB66GtSpgxukzxZkowIG3KtfpxY6', NULL, '2020-09-03 21:00:00', '2020-09-03 21:00:00', NULL);
+(1, 'super', 'super@admin.com', NULL, '$2y$10$aTnjDThW7BAp91K5vyRCrup/vXMqorQ4U93MNAbMiW.cpJlGArgse', NULL, '2020-09-05 21:00:00', '2020-09-05 21:00:00', NULL);
 
 --
 -- Indexes for dumped tables
@@ -688,6 +768,14 @@ ALTER TABLE `edu_types`
 --
 ALTER TABLE `facilities`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `facility_translations`
+--
+ALTER TABLE `facility_translations`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `facility_translations_facility_id_locale_unique` (`facility_id`,`locale`),
+  ADD KEY `facility_translations_locale_index` (`locale`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -892,6 +980,12 @@ ALTER TABLE `facilities`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `facility_translations`
+--
+ALTER TABLE `facility_translations`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -913,7 +1007,7 @@ ALTER TABLE `grades`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -943,7 +1037,7 @@ ALTER TABLE `payment_methods`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
 
 --
 -- AUTO_INCREMENT for table `qualifications`
