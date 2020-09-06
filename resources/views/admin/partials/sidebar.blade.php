@@ -111,7 +111,7 @@
                     @if (auth()->user()->hasPermission('read_facilities'))
                     <li {{ request()->route()->getName() === 'admin.facilities.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.facilities.index') }}" class="nav-link">
-                            <i class="fa fa-flag"></i>
+                            <i class="fa fa-list"></i>
                             <span class="title">{{ trans('admin.facilities') }}</span>
                         </a>
                     </li>
@@ -119,7 +119,7 @@
                     @if (auth()->user()->hasPermission('read_grades'))
                     <li {{ request()->route()->getName() === 'admin.grades.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.grades.index') }}" class="nav-link">
-                            <i class="fa fa-flag"></i>
+                            <i class="fa fa-list"></i>
                             <span class="title">{{ trans('admin.grades') }}</span>
                         </a>
                     </li>
@@ -127,7 +127,7 @@
                     @if (auth()->user()->hasPermission('read_sub_grades'))
                     <li {{ request()->route()->getName() === 'admin.sub_grades.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.sub_grades.index') }}" class="nav-link">
-                            <i class="fa fa-flag"></i>
+                            <i class="fa fa-list"></i>
                             <span class="title">{{ trans('admin.sub_grades') }}</span>
                         </a>
                     </li>
@@ -151,7 +151,7 @@
                     @if (auth()->user()->hasPermission('read_payment_methods'))
                     <li {{ request()->route()->getName() === 'admin.payment_methods.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.payment_methods.index') }}" class="nav-link">
-                            <i class="fa fa-building-o"></i>
+                            <i class="fa fa-money"></i>
                             <span class="title">{{ trans('admin.payment_methods') }}</span>
                         </a>
                     </li>
@@ -159,7 +159,7 @@
                     @if (auth()->user()->hasPermission('read_edu_types'))
                     <li {{ request()->route()->getName() === 'admin.edu_types.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.edu_types.index') }}" class="nav-link">
-                            <i class="fa fa-building-o"></i>
+                            <i class="fa fa-list"></i>
                             <span class="title">{{ trans('admin.edu_types') }}</span>
                         </a>
                     </li>
@@ -167,7 +167,7 @@
                     @if (auth()->user()->hasPermission('read_discounts'))
                     <li {{ request()->route()->getName() === 'admin.discounts.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.discounts.index') }}" class="nav-link">
-                            <i class="fa fa-building-o"></i>
+                            <i class="fa fa-list"></i>
                             <span class="title">{{ trans('admin.discounts') }}</span>
                         </a>
                     </li>
@@ -175,7 +175,7 @@
                     @if (auth()->user()->hasPermission('read_acceptance_terms'))
                     <li {{ request()->route()->getName() === 'admin.acceptance_terms.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.acceptance_terms.index') }}" class="nav-link">
-                            <i class="fa fa-building-o"></i>
+                            <i class="fa fa-list"></i>
                             <span class="title">{{ trans('admin.acceptance_terms') }}</span>
                         </a>
                     </li>
@@ -183,7 +183,7 @@
                     @if (auth()->user()->hasPermission('read_rates'))
                     <li {{ request()->route()->getName() === 'admin.rates.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.rates.index') }}" class="nav-link">
-                            <i class="fa fa-building-o"></i>
+                            <i class="fa fa-list"></i>
                             <span class="title">{{ trans('admin.rates') }}</span>
                         </a>
                     </li>
@@ -191,7 +191,7 @@
                     @if (auth()->user()->hasPermission('read_qualifications'))
                     <li {{ request()->route()->getName() === 'admin.qualifications.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.qualifications.index') }}" class="nav-link">
-                            <i class="fa fa-building-o"></i>
+                            <i class="fa fa-list"></i>
                             <span class="title">{{ trans('admin.qualifications') }}</span>
                         </a>
                     </li>
@@ -230,28 +230,28 @@
                     <span class="menu-title">{{ trans('admin.reports') }}</span>
                 </a>
                 <ul class="menu-content">
-                    <li>
-                        <a href="data-list-view.html">
+                    <li {{ request()->route()->getName() === 'admin.reports.schools.index' ? 'class=active' : '' }}>
+                        <a href="#" class="nav-link">
                             <i class="feather icon-bar-chart"></i>
-                            <span class="menu-item">List View</span>
+                            <span class="title">{{ trans('admin.reports_schools') }}</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="data-list-view.html">
+                    <li {{ request()->route()->getName() === 'admin.reports.teachers.index' ? 'class=active' : '' }}>
+                        <a href="#" class="nav-link">
                             <i class="feather icon-bar-chart"></i>
-                            <span class="menu-item">List View</span>
+                            <span class="title">{{ trans('admin.reports_teachers') }}</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="data-list-view.html">
+                    <li {{ request()->route()->getName() === 'admin.reports.parents.index' ? 'class=active' : '' }}>
+                        <a href="#" class="nav-link">
                             <i class="feather icon-bar-chart"></i>
-                            <span class="menu-item">List View</span>
+                            <span class="title">{{ trans('admin.reports_parents') }}</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="data-list-view.html">
+                    <li {{ request()->route()->getName() === 'admin.reports.financial.index' ? 'class=active' : '' }}>
+                        <a href="#" class="nav-link">
                             <i class="fa fa-money"></i>
-                            <span class="menu-item">List View</span>
+                            <span class="title">{{ trans('admin.reports_financial') }}</span>
                         </a>
                     </li>
                 </ul>

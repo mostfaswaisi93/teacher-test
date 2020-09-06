@@ -3,15 +3,11 @@
     color: #fff;
 }
 
-.portlet .card {
-    border: 1px solid #5c54c4;
+.portlet .card .card-header {
+    background-color: #5b53c3;
+    padding: 1rem 1rem;
 }
 
-.portlet .card-header {
-    background-color: #5c54c5;
-    padding-bottom: 15px;
-}
-
-.portlet .card-title {
+.portlet .card .card-header .card-title {
     color: #fff;
 }

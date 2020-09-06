@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.create_brand') @endsection
+@section('title') @lang('admin.create_facility') @endsection
 
 @section('content')
 
@@ -7,7 +7,7 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.create_brand')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.create_facility')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
@@ -16,7 +16,7 @@
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.facilities.index') }}">@lang('admin.facilities_management')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.create_brand')</li>
+                        <li class="breadcrumb-item active">@lang('admin.create_facility')</li>
                     </ol>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-plus-square mr-25"></i>
-                            @lang('admin.create_brand')
+                            @lang('admin.create_facility')
                         </h4>
                     </div>
                     <div class="card-content">
@@ -56,13 +56,13 @@
                                     <div class="col-md-6 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ asset('uploads/brand_images/default.png') }}"
+                                                <img src="{{ asset('uploads/facility_images/default.png') }}"
                                                     alt="users avatar"
                                                     class="users-avatar-shadow rounded image img-thumbnail image-preview"
                                                     height="70" width="70">
                                             </a>
                                             <div class="media-body mt-50">
-                                                <label>@lang('admin.brand_image')</label>
+                                                <label>@lang('admin.facility_image')</label>
                                                 <div class="col-12 d-flex mt-1 px-0">
                                                     <input type="file" class="form-control-file image" name="image"
                                                         id="image" style="display:none;">

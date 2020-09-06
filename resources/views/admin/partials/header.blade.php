@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+<html class="loading" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}" lang="{{ LaravelLocalization::getCurrentLocaleName() }}">
 
 <!-- BEGIN: Head-->
 <head>

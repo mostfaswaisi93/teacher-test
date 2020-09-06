@@ -14,7 +14,6 @@
 <!-- BEGIN Vendor JS-->
 
 <!-- BEGIN: Page Vendor JS-->
-<script src="{{ url('admin_files/app-assets/vendors/js/tables/datatable/pdfmake.min.js') }}"></script>
 <script src="{{ url('admin_files/app-assets/vendors/js/tables/datatable/vfs_fonts.js') }}"></script>
 <script src="{{ url('admin_files/app-assets/vendors/js/tables/datatable/datatables.min.js') }}"></script>
 <script src="{{ url('admin_files/app-assets/vendors/js/tables/datatable/datatables.buttons.min.js') }}"></script>
@@ -29,10 +28,6 @@
 <script src="{{ url('admin_files/app-assets/js/core/app.js') }}"></script>
 <script src="{{ url('admin_files/app-assets/js/scripts/components.js') }}"></script>
 <!-- END: Theme JS-->
-
-<!-- BEGIN: Page JS-->
-<script src="{{ url('admin_files/app-assets/js/scripts/datatables/datatable.js') }}"></script>
-<!-- END: Page JS-->
 
 {{-- Custom js --}}
 <script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>
@@ -55,20 +50,15 @@
         document.getElementById("image").click();
     };
 
-    function ImgArUpload() {
-        event.preventDefault();
-        document.getElementById("image_ar").click();
-    };
-
-    function ImgEnUpload() {
-        event.preventDefault();
-        document.getElementById("image_en").click();
-    };
-
     function IconUpload() {
         event.preventDefault();
         document.getElementById("icon").click();
     };
+
+    function getDataTableLanguage() {
+        var lang = $('html').attr('lang');
+        return '//cdn.datatables.net/plug-ins/1.10.21/i18n/'+lang+'.json'
+    }
 </script>
 
 @stack('scripts')

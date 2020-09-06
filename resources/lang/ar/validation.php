@@ -106,17 +106,6 @@ return [
     'url'         => 'صيغة الرابط :attribute غير صحيحة.',
     'uuid'        => ':attribute يجب أن يكون بصيغة UUID سليمة.',
 
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | Here you may specify custom validation messages for attributes using the
-    | convention "attribute.rule" to name the lines. This makes it quick to
-    | specify a specific custom language line for a given attribute rule.
-    |
-    */
-
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
@@ -163,20 +152,15 @@ return [
             'name'          => 'الاسم باللغة العربية',
             'title'         => 'العنوان باللغة العربية',
             'description'   => 'الوصف باللغة العربية',
-            'currency'      => 'العملة باللغة العربية',
             'image'         => 'الصورة باللغة العربية',
-            'image_sm'      => 'صورة صغيرة باللغة العربية',
-            'text'          => 'النص باللغة العربية',
         ],
         'en' => [
             'name'          => 'الاسم باللغة الإنجليزية',
             'title'         => 'العنوان باللغة الإنجليزية',
             'description'   => 'الوصف باللغة الإنجليزية',
             'image'         => 'الصورة باللغة الإنجليزية',
-            'text'          => 'النص باللغة الإنجليزية',
         ],
 
-        'category_id'           => 'القسم',
         'country_id'            => 'الدولة',
         'user_id'               => 'اسم المستخدم',
         'phone.0'               => 'التلفون',
