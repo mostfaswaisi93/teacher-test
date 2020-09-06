@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Parent extends BaseModel
 {
     protected $table    = 'parents';
+    protected $guarded  = [];
 }

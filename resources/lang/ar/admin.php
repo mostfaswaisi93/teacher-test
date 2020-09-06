@@ -37,10 +37,6 @@ return [
     'updated_successfully'      => 'تم تحديث البيانات بنجاح',
     'deleted_successfully'      => 'تم حذف البيانات بنجاح',
 
-    'no_data_found'             => 'لا يوجد أي سجلات',
-    'no_records'                => 'لا يوجد أي سجلات',
-    'no_items'                  => 'لا يوجد أصناف لهذا القسم',
-
     'create_user'               => 'إضافة مستخدم جديد',
     'create_country'            => 'إضافة دولة جديدة',
     'create_city'               => 'إضافة مدينة جديدة',
@@ -48,9 +44,6 @@ return [
     'edit_user'                 => 'تعديل مستخدم',
     'edit_country'              => 'تعديل دولة',
     'edit_city'                 => 'تعديل مدينة',
-
-    'status'                    => 'الحالة',
-    'language'                  => 'اللغة',
 
     'reports'                   => 'التقارير والإحصائيات',
     'messages'                  => 'الرسائل',
@@ -65,15 +58,12 @@ return [
     'last_name'                 => 'الاسم الأخير',
     'email'                     => 'البريد الإلكتروني',
     'image'                     => 'صورة',
+    'status'                    => 'الحالة',
+    'language'                  => 'اللغة',
     'user_image'                => 'صورة مستخدم',
-    'slider_image'              => 'صورة سلايدر',
-    'banner_image'              => 'صورة بنر تعريفي',
-    'image_ar'                  => 'الصورة باللغة العربية',
-    'image_en'                  => 'الصورة باللغة الإنجليزية',
     'icon'                      => 'أيقونة',
     'file_upload'               => 'استعراض',
     'icon_upload'               => 'إضافة أيقونة',
-    'module'                    => 'القيمة',
     'action'                    => 'خيارات',
 
     'active'                    => 'مفعل',
@@ -126,23 +116,22 @@ return [
     'subject'                   => 'مادة دراسية',
     'package'                   => 'الباقة',
     'facility'                  => 'المرفق',
+    'discount'                  => 'الخصم',
     'city'                      => 'المدينة',
     'country'                   => 'الدولة',
     'user'                      => 'مستخدم',
 
-    'permissions'               => 'الصلاحيات',
     'all_banners'               => 'كل البنرات التعريفية',
     'all_countries'             => 'كل الدول',
     'all_cities'                => 'كل المدن',
+    'permissions'               => 'الصلاحيات',
     'name'                      => 'الاسم',
     'username'                  => 'اسم المستخدم',
     'title'                     => 'العنوان',
     'phone_code'                => 'رمز الاتصال',
     'iso_code'                  => 'رمز الدولة',
-    'currency'                  => 'العملة',
     'description'               => 'الوصف',
     'created_at'                => 'تاريخ الإنشاء',
-
     'total'                     => 'المجموع',
     'price'                     => 'السعر',
 
@@ -150,11 +139,10 @@ return [
     'new_order'                 => 'طلب جديد',
     'new_mail'                  => 'رسالة جديدة',
     'save_print'                => 'حفظ وطباعة',
-    'discount'                  => 'الخصم',
 
     'no_messages'               => 'لا يوجد رسائل جديدة',
-    'rall_messages'             => 'قراءة كل الرسائل',
-    'rall_notifications'        => 'قراءة كل الاشعارات',
+    'read_all_messages'         => 'قراءة كل الرسائل',
+    'read_all_notifications'    => 'قراءة كل الاشعارات',
 
     'ar'                        => [
         'name'          => 'الاسم باللغة العربية',

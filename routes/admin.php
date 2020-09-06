@@ -8,12 +8,15 @@ Route::group(
 
             Route::resource('banners', 'BannerController')->except(['show']);
             Route::get('banners/destroy/{id}', 'BannerController@destroy');
+            Route::post('banners/updateStatus/{id}', 'BannerController@updateStatus');
 
             Route::resource('schools', 'SchoolController')->except(['show']);
             Route::get('schools/destroy/{id}', 'SchoolController@destroy');
+            Route::post('schools/updateStatus/{id}', 'SchoolController@updateStatus');
 
             Route::resource('teachers', 'TeacherController')->except(['show']);
             Route::get('teachers/destroy/{id}', 'TeacherController@destroy');
+            Route::post('teachers/updateStatus/{id}', 'TeacherController@updateStatus');
 
             Route::resource('parents', 'ParentController')->except(['show']);
             Route::get('parents/destroy/{id}', 'ParentController@destroy');

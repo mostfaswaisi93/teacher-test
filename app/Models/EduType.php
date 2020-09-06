@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class EduType extends BaseModel
 {
     protected $table    = 'edu_types';
+    protected $guarded  = [];
 }
