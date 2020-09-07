@@ -14,7 +14,7 @@
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.cities.index') }}">@lang('admin.cities_management')</a>
+                            <a href="{{ route('admin.cities.index') }}">@lang('admin.cities')</a>
                         </li>
                         <li class="breadcrumb-item active">@lang('admin.edit_city')</li>
                     </ol>

@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.cities_management') @endsection
+@section('title') @lang('admin.cities') @endsection
 
 @section('content')
 
@@ -7,13 +7,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.cities_management')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.cities')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
                             <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.cities_management')</li>
+                        <li class="breadcrumb-item active">@lang('admin.cities')</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,7 @@
     <section>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.cities_management')</h4>
+                <h4 class="card-title">@lang('admin.cities')</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">

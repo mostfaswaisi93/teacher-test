@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.edit_facility') @endsection
+@section('title') {{ trans('admin.edit_facility') }} @endsection
 
 @section('content')
 
@@ -7,16 +7,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.edit_facility')</h2>
+                <h2 class="content-header-title float-left mb-0">{{ trans('admin.edit_facility') }}</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
+                            <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.facilities.index') }}">@lang('admin.facilities_management')</a>
+                            <a href="{{ route('admin.facilities.index') }}">{{ trans('admin.facilities') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.edit_facility')</li>
+                        <li class="breadcrumb-item active">{{ trans('admin.edit_facility') }}</li>
                     </ol>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-edit mr-25"></i>
-                            @lang('admin.edit_facility') - {{ $facility->name }}
+                            {{ trans('admin.edit_facility') }} - {{ $facility->name }}
                         </h4>
                     </div>
                     <div class="card-content">
@@ -46,10 +46,10 @@
                                     @foreach (config('translatable.locales') as $locale)
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label>@lang('admin.' . $locale . '.name')</label>
+                                            <label>{{ trans('admin.' . $locale . '.name') }}</label>
                                             <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
                                                 value="{{ $facility->translate($locale)->name }}"
-                                                placeholder="@lang('admin.' . $locale . '.name')">
+                                                placeholder="{{ trans('admin.' . $locale . '.name') }}">
                                         </div>
                                     </div>
                                     @endforeach
@@ -61,13 +61,13 @@
                                                     height="70" width="70">
                                             </a>
                                             <div class="media-body mt-50">
-                                                <label>@lang('admin.facility_image')</label>
+                                                <label>{{ trans('admin.facility_image') }}</label>
                                                 <div class="col-4 d-flex mt-1 px-0">
                                                     <input type="file" class="form-control-file image" name="image"
                                                         id="image" style="display:none;">
                                                     <button class="btn btn-primary" onclick="FileUpload();">
                                                         <i class="fa fa-plus"></i>
-                                                        @lang('admin.file_upload')
+                                                        {{ trans('admin.file_upload') }}
                                                     </button>
                                                 </div>
                                             </div>
@@ -80,7 +80,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <button type="submit" class="btn btn-primary">
-                                                    @lang('admin.update')
+                                                    {{ trans('admin.update') }}
                                                 </button>
                                             </div>
                                         </div>

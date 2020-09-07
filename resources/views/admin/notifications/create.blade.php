@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.create_slider') @endsection
+@section('title') {{ trans('admin.create_facility') }}@endsection
 
 @section('content')
 
@@ -7,16 +7,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.create_slider')</h2>
+                <h2 class="content-header-title float-left mb-0">{{ trans('admin.create_facility') }}</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
+                            <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.sliders.index') }}">@lang('admin.sliders')</a>
+                            <a href="{{ route('admin.facilities.index') }}">{{ trans('admin.facilities') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.create_slider')</li>
+                        <li class="breadcrumb-item active">{{ trans('admin.create_facility') }}</li>
                     </ol>
                 </div>
             </div>
@@ -32,59 +32,43 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-plus-square mr-25"></i>
-                            @lang('admin.create_slider')
+                            {{ trans('admin.create_facility') }}
                         </h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             @include('partials._errors')
-                            <form action="{{ route('admin.sliders.store') }}" method="post"
+                            <form action="{{ route('admin.facilities.store') }}" method="post"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('POST')
                                 <div class="row">
-                                    <div class="col-md-4 col-12">
-                                        <div class="form-group">
-                                            <div class="controls">
-                                                <label>@lang('admin.users')</label>
-                                                <select name="user_id" class="form-control select2">
-                                                    <option value="">@lang('admin.all_users')</option>
-                                                    @foreach ($users as $user)
-                                                    <option value="{{ $user->id }}"
-                                                        {{ old('user_id') == $user->id ? 'selected' : '' }}>
-                                                        {{ $user->name }}
-                                                    </option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                     @foreach (config('translatable.locales') as $locale)
-                                    <div class="col-md-4 col-12">
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
-                                            <label>@lang('admin.' . $locale . '.text')</label>
-                                            <input id="text" type="text" name="{{ $locale }}[text]" class="form-control"
-                                                value="{{ old($locale . '.text') }}"
-                                                placeholder="@lang('admin.' . $locale . '.text')">
+                                            <label>{{ trans('admin.' . $locale . '.name') }}</label>
+                                            <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
+                                                value="{{ old($locale . '.name') }}"
+                                                placeholder="{{ trans('admin.' . $locale . '.name') }}">
                                         </div>
                                     </div>
                                     @endforeach
                                     <div class="col-md-6 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ asset('uploads/slider_images/default.png') }}"
+                                                <img src="{{ asset('uploads/facility_images/default.png') }}"
                                                     alt="users avatar"
                                                     class="users-avatar-shadow rounded image img-thumbnail image-preview"
                                                     height="70" width="70">
                                             </a>
                                             <div class="media-body mt-50">
-                                                <label>@lang('admin.slider_image')</label>
+                                                <label>{{ trans('admin.facility_image') }}</label>
                                                 <div class="col-12 d-flex mt-1 px-0">
                                                     <input type="file" class="form-control-file image" name="image"
                                                         id="image" style="display:none;">
                                                     <button class="btn btn-primary" onclick="FileUpload();">
                                                         <i class="fa fa-plus"></i>
-                                                        @lang('admin.file_upload')
+                                                        {{ trans('admin.file_upload') }}
                                                     </button>
                                                 </div>
                                             </div>
@@ -97,7 +81,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <button type="submit" class="btn btn-primary">
-                                                    @lang('admin.add')
+                                                    {{ trans('admin.add') }}
                                                 </button>
                                             </div>
                                         </div>
@@ -113,13 +97,3 @@
 </div>
 
 @endsection
-
-@push('scripts')
-
-<script type="text/javascript">
-    $('.select2').select2({
-        placeholder: "Select User"
-    });
-</script>
-
-@endpush
