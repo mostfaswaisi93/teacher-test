@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.home') @endsection
+@section('title') {{ trans('admin.home') }}@endsection
 
 @section('content')
 

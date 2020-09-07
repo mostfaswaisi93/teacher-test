@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.cities') @endsection
+@section('title') {{ trans('admin.cities') }} @endsection
 
 @section('content')
 
@@ -7,13 +7,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.cities')</h2>
+                <h2 class="content-header-title float-left mb-0">{{ trans('admin.cities') }}</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
+                            <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.cities')</li>
+                        <li class="breadcrumb-item active">{{ trans('admin.cities') }}</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,9 @@
     <section>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.cities')</h4>
+                <h4 class="card-title">
+                    {{ trans('admin.cities') }}
+                </h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -34,13 +36,13 @@
                         <a href="{{ route('admin.cities.create') }}">
                             <button class="btn btn-primary mb-2">
                                 <i class="feather icon-plus mr-25"></i>
-                                @lang('admin.create_city')
+                                {{ trans('admin.create_city') }}
                             </button>
                         </a>
                         @else
                         <a href="#">
                             <button class="btn btn-primary mb-2 disabled">
-                                <i class="feather icon-plus"></i> @lang('admin.create_city')
+                                <i class="feather icon-plus"></i> {{ trans('admin.create_city') }}
                             </button>
                         </a>
                         @endif
@@ -51,12 +53,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('admin.city')</th>
-                                    <th>@lang('admin.country')</th>
-                                    <th>@lang('admin.created_at')</th>
-                                    <th>@lang('admin.status')</th>
-                                    <th>@lang('admin.change_status')</th>
-                                    <th>@lang('admin.action')</th>
+                                    <th>{{ trans('admin.city') }}</th>
+                                    <th>{{ trans('admin.country') }}</th>
+                                    <th>{{ trans('admin.created_at') }}</th>
+                                    <th>{{ trans('admin.status') }}</th>
+                                    <th>{{ trans('admin.change_status') }}</th>
+                                    <th>{{ trans('admin.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>

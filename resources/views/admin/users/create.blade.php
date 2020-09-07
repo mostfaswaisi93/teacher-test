@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.create_user') @endsection
+@section('title') {{ trans('admin.create_user') }} @endsection
 
 @section('content')
 
@@ -7,16 +7,16 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.create_user')</h2>
+                <h2 class="content-header-title float-left mb-0">{{ trans('admin.create_user') }}</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
+                            <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.users.index') }}">@lang('admin.users_management')</a>
+                            <a href="{{ route('admin.users.index') }}">{{ trans('admin.users_management') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.create_user')</li>
+                        <li class="breadcrumb-item active">{{ trans('admin.create_user') }}</li>
                     </ol>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <h4 class="card-title">
                             <i class="feather icon-user-plus mr-25"></i>
-                            @lang('admin.create_user')
+                            {{ trans('admin.create_user') }}
                         </h4>
                     </div>
                     <div class="card-content">
@@ -45,46 +45,47 @@
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label>@lang('admin.name')</label>
+                                                <label>{{ trans('admin.name') }}</label>
                                                 <input id="name" type="text" name="name" class="form-control"
-                                                    value="{{ old('name') }}" placeholder="@lang('admin.name')">
+                                                    value="{{ old('name') }}" placeholder="{{ trans('admin.name') }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label>@lang('admin.username')</label>
+                                                <label>{{ trans('admin.username') }}</label>
                                                 <input id="username" type="text" name="username" class="form-control"
-                                                    value="{{ old('username') }}" placeholder="@lang('admin.username')">
+                                                    value="{{ old('username') }}"
+                                                    placeholder="{{ trans('admin.username') }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label>@lang('admin.email')</label>
+                                                <label>{{ trans('admin.email') }}</label>
                                                 <input id="email" type="email" name="email" class="form-control"
-                                                    value="{{ old('email') }}" placeholder="@lang('admin.email')">
+                                                    value="{{ old('email') }}" placeholder="{{ trans('admin.email') }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label>@lang('admin.password')</label>
+                                                <label>{{ trans('admin.password') }}</label>
                                                 <input id="password" type="password" name="password"
-                                                    class="form-control" placeholder="@lang('admin.password')">
+                                                    class="form-control" placeholder="{{ trans('admin.password') }}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <div class="controls">
-                                                <label>@lang('admin.password_confirmation')</label>
+                                                <label>{{ trans('admin.password_confirmation') }}</label>
                                                 <input id="password_confirmation" type="password"
                                                     name="password_confirmation" class="form-control"
-                                                    placeholder="@lang('admin.password_confirmation')">
+                                                    placeholder="{{ trans('admin.password_confirmation') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -97,13 +98,13 @@
                                                     height="70" width="70">
                                             </a>
                                             <div class="media-body mt-50">
-                                                <label>@lang('admin.user_image')</label>
+                                                <label>{{ trans('admin.user_image') }}</label>
                                                 <div class="col-12 d-flex mt-1 px-0">
                                                     <input type="file" class="form-control-file image" name="image"
                                                         id="image" style="display:none;">
                                                     <button class="btn btn-primary" onclick="FileUpload();">
                                                         <i class="fa fa-plus"></i>
-                                                        @lang('admin.file_upload')
+                                                        {{ trans('admin.file_upload') }}
                                                     </button>
                                                 </div>
                                             </div>
@@ -113,7 +114,7 @@
                                         <div class="table-responsive border rounded px-1">
                                             <h6 class="border-bottom py-1 mx-1 mb-0 font-medium-2">
                                                 <i class="feather icon-lock mr-50"></i>
-                                                @lang('admin.permissions')
+                                                {{ trans('admin.permissions') }}
                                             </h6> <br>
                                             @php
                                             $models = ['users', 'categories', 'items', 'countries', 'cities',
@@ -123,10 +124,10 @@
                                             <table class="table table-borderless">
                                                 <thead>
                                                     <tr>
-                                                        <th>@lang('admin.module')</th>
+                                                        <th>{{ trans('admin.module') }}</th>
                                                         @foreach ($maps as $map)
                                                         <th>
-                                                            @lang('admin.' .$map)
+                                                            {{ trans('admin.' .$map) }}
                                                         </th>
                                                         @endforeach
                                                     </tr>
@@ -134,7 +135,7 @@
                                                 <tbody>
                                                     @foreach ($models as $index => $model)
                                                     <tr>
-                                                        <td> @lang('admin.' .$model)</td>
+                                                        <td> {{ trans('admin.' .$model) }}</td>
                                                         @foreach ($maps as $map)
                                                         <td>
                                                             <div class="vs-checkbox-con vs-checkbox-primary">
@@ -161,7 +162,7 @@
                                         <div class="form-group">
                                             <div class="controls">
                                                 <button type="submit" class="btn btn-primary">
-                                                    @lang('admin.add')
+                                                    {{ trans('admin.add') }}
                                                 </button>
                                             </div>
                                         </div>

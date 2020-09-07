@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.contacts') @endsection
+@section('title') {{ trans('admin.contacts') }} @endsection
 
 @section('content')
 
@@ -7,13 +7,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.contacts')</h2>
+                <h2 class="content-header-title float-left mb-0">{{ trans('admin.contacts') }}</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
+                            <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.contacts')</li>
+                        <li class="breadcrumb-item active">{{ trans('admin.contacts') }}</li>
                     </ol>
                 </div>
             </div>
@@ -25,7 +25,9 @@
     <section>
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.contacts')</h4>
+                <h4 class="card-title">
+                    {{ trans('admin.contacts') }}
+                </h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -35,11 +37,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('admin.title')</th>
-                                    <th>@lang('admin.customer')</th>
-                                    <th>@lang('admin.mobile')</th>
-                                    <th>@lang('admin.created_at')</th>
-                                    <th>@lang('admin.action')</th>
+                                    <th>{{ trans('admin.title') }}</th>
+                                    <th>{{ trans('admin.customer') }}</th>
+                                    <th>{{ trans('admin.mobile') }}</th>
+                                    <th>{{ trans('admin.created_at') }}</th>
+                                    <th>{{ trans('admin.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>

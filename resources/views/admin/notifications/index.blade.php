@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') {{ trans('admin.facilities') }}@endsection
 
 @section('content')
 
@@ -6,13 +7,12 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.sliders')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
+                            <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.sliders')</li>
+                        <li class="breadcrumb-item active">{{ trans('admin.facilities') }}</li>
                     </ol>
                 </div>
             </div>
@@ -20,42 +20,46 @@
     </div>
 </div>
 
+<div class="btn-group">
+    @if (auth()->user()->hasPermission('create_facilities'))
+    <a href="{{ route('admin.facilities.create') }}">
+        <button class="btn btn-primary mb-2">
+            <i class="feather icon-plus mr-25"></i>
+            {{ trans('admin.create') }}
+        </button>
+    </a>
+    @else
+    <a href="#">
+        <button class="btn btn-primary mb-2 disabled">
+            <i class="feather icon-plus"></i> {{ trans('admin.create') }}
+        </button>
+    </a>
+    @endif
+</div>
+
 <div class="content-body">
-    <section>
+    <section class="portlet">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">@lang('admin.sliders')</h4>
+                <h4 class="card-title">
+                    <li class="fa fa-list"></li>
+                    {{ trans('admin.facilities') }}
+                </h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <div class="btn-group">
-                        @if (auth()->user()->hasPermission('create_sliders'))
-                        <a href="{{ route('admin.sliders.create') }}">
-                            <button class="btn btn-primary mb-2">
-                                <i class="feather icon-plus mr-25"></i>
-                                @lang('admin.create_slider')
-                            </button>
-                        </a>
-                        @else
-                        <a href="#">
-                            <button class="btn btn-primary mb-2 disabled">
-                                <i class="feather icon-plus"></i> @lang('admin.create_slider')
-                            </button>
-                        </a>
-                        @endif
-                    </div>
                     <div class="table-responsive">
                         <table id="data-table" class="table table-striped table-bordered dt-responsive nowrap"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>@lang('admin.image')</th>
-                                    <th>@lang('admin.username')</th>
-                                    <th>@lang('admin.created_at')</th>
-                                    <th>@lang('admin.status')</th>
-                                    <th>@lang('admin.change_status')</th>
-                                    <th>@lang('admin.action')</th>
+                                    <th>{{ trans('admin.icon') }}</th>
+                                    <th>{{ trans('admin.name') }}</th>
+                                    <th>{{ trans('admin.created_at') }}</th>
+                                    <th>{{ trans('admin.status') }}</th>
+                                    <th>{{ trans('admin.change_status') }}</th>
+                                    <th>{{ trans('admin.action') }}</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -72,6 +76,7 @@
 @push('scripts')
 
 <script type="text/javascript">
+    var status  = '';
     $(document).ready(function(){
         $('#data-table').DataTable({
             processing: true,
@@ -79,7 +84,7 @@
             responsive: true,
             order: [[ 2, "desc" ]],
             ajax: {
-                url: "{{ route('admin.sliders.index') }}",
+                url: "{{ route('admin.facilities.index') }}",
             },
             columns: [{
                     render: function(data, type, row, meta) {
@@ -91,11 +96,7 @@
                         return "<img src=" + data + " width='50px' class='img-thumbnail' />";
                     }, orderable: false , searchable: false
                 },
-                { data: 'user', name: 'user', 
-                    render: function(data, type, full, meta) {
-                        return "<div class='badge badge-primary'>"+ data +"</div>";
-                    }, orderable: false , searchable: false
-                },
+                { data: 'name', name: 'name' },
                 { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
                 { data: 'active', name: 'status',
                     render: function(data, type, full, meta) {
@@ -120,11 +121,14 @@
                 return $select[0].outerHTML
                 }
             } ],
+            language : {
+                url: getDataTableLanguage()
+            }
         });
     });
 
     $(document).on('click', '.delete', function(){
-        slider_id = $(this).attr('id');
+        facility_id = $(this).attr('id');
         swal({
             title: "{{ trans('admin.are_sure') }}",
             type: 'warning',
@@ -136,7 +140,7 @@
         }).then(function(result){
             if(result.value){
                 $.ajax({
-                    url:"sliders/destroy/" + slider_id,
+                    url:"facilities/destroy/" + facility_id,
                     success: function(data){
                         console.log(data);
                         $('#data-table').DataTable().ajax.reload();
@@ -148,21 +152,21 @@
     });
 
     function selectStatus(id){
-        slider_id = id;
+        facility_id = id;
     }
 
     $(document).on('change', '#status', function(e) {
-        var status_slider = $(this).find("option:selected").val();
-        console.log(status_slider)
-        if(status_slider == "1"){
+        var status_facility = $(this).find("option:selected").val();
+        console.log(status_facility)
+        if(status_facility == "1"){
             toastr.success('{{ trans('admin.status_changed') }}!');
-        }else if(status_slider == "0"){
+        }else if(status_facility == "0"){
             toastr.success('{{ trans('admin.status_changed') }}!');
         } else {
             toastr.error('{{ trans('admin.status_not_changed') }}!');
         }
         $.ajax({
-            url:"sliders/updateStatus/"+slider_id+"?active="+status_slider,
+            url:"facilities/updateStatus/"+facility_id+"?active="+status_facility,
             headers: {
                 'X-CSRF-Token': "{{ csrf_token() }}"
             },
