@@ -15,6 +15,7 @@ class CreateDiscountsTable extends Migration
     {
         Schema::create('discounts', function (Blueprint $table) {
             $table->id();
+            $table->integer('active')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

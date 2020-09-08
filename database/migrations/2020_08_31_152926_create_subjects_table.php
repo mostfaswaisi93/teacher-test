@@ -15,6 +15,7 @@ class CreateSubjectsTable extends Migration
     {
         Schema::create('subjects', function (Blueprint $table) {
             $table->id();
+            $table->integer('active')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
