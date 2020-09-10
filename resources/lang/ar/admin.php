@@ -2,6 +2,8 @@
 
 return [
     'teacher_title'             => 'المعلم',
+    'back_home'                 => 'العودة إلى الصفحة الرئيسية',
+    'Page_Not_Found'            => 'الصفحة غير موجودة',
     'home'                      => 'الرئيسية',
     'logout'                    => 'تسجيل الخروج',
     'available'                 => 'متصل',
