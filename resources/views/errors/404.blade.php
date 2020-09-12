@@ -62,7 +62,7 @@
                                 <div class="card-body text-center">
                                     <img src="{{ url('admin_files/app-assets/images/pages/404.png') }}"
                                         class="img-fluid align-self-center" alt="branding logo">
-                                    <h1 class="font-large-2 my-1">404 - {{ trans('admin.Page_Not_Found') }}</h1>
+                                    <h1 class="font-large-2 my-1">404 - {{ trans('admin.page_not_found') }}</h1>
                                     <a class="btn btn-primary btn-lg mt-2" href="{{ route('admin.index') }}">
                                         {{ trans('admin.back_home') }}
                                     </a>

@@ -3,7 +3,8 @@
 return [
     'teacher_title'             => 'المعلم',
     'back_home'                 => 'العودة إلى الصفحة الرئيسية',
-    'Page_Not_Found'            => 'الصفحة غير موجودة',
+    'page_not_found'            => 'الصفحة غير موجودة',
+    'internal_server_error'     => 'خطأ في الخادم الداخلي',
     'home'                      => 'الرئيسية',
     'logout'                    => 'تسجيل الخروج',
     'available'                 => 'متصل',
