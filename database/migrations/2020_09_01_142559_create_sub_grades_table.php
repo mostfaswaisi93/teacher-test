@@ -15,7 +15,7 @@ class CreateSubGradesTable extends Migration
     {
         Schema::create('sub_grades', function (Blueprint $table) {
             $table->id();
-            $table->integer('active')->default(1);
+            $table->boolean('enabled')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

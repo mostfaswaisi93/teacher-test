@@ -15,7 +15,7 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
-            $table->integer('active')->default(1);
+            $table->boolean('enabled')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

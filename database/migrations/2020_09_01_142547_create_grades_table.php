@@ -15,7 +15,8 @@ class CreateGradesTable extends Migration
     {
         Schema::create('grades', function (Blueprint $table) {
             $table->id();
-            $table->integer('active')->default(1);
+            $table->boolean('enabled')->default(1);
+            $table->string('color');
             $table->timestamps();
             $table->softDeletes();
         });

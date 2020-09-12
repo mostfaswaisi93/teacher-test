@@ -17,8 +17,7 @@ class CreateCountriesTable extends Migration
             $table->id();
             $table->string('phone_code')->uniqid();
             $table->string('iso_code')->uniqid();
-            $table->integer('active')->default(0);
-            // $table->string('flage')->nullable();
+            $table->boolean('enabled')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

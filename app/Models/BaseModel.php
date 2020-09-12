@@ -9,6 +9,7 @@ class BaseModel extends Model
 {
     use SoftDeletes;
 
+    public $timestamps  = true;
     protected $casts    = ['created_at' => 'date:Y-m-d'];
     protected $dates    = ['created_at', 'updated_at', 'deleted_at'];
 

@@ -10,9 +10,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
             'name'          => 'super',
             'email'         => 'super@admin.com',
-            'password'      => bcrypt('password'),
-            'created_at'    => date('Y-m-d'),
-            'updated_at'    => date('Y-m-d')
+            'password'      => bcrypt('password')
         ]);
 
         $user->attachRole('super_admin');

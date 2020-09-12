@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateQualificationsTable extends Migration
+class CreateSubGradeTranslationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateQualificationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('qualifications', function (Blueprint $table) {
+        Schema::create('sub_grade_translations', function (Blueprint $table) {
             $table->id();
-            $table->boolean('enabled')->default(1);
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -28,6 +26,6 @@ class CreateQualificationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qualifications');
+        Schema::dropIfExists('sub_grade_translations');
     }
 }

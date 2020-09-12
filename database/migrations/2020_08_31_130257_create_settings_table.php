@@ -21,6 +21,7 @@ class CreateSettingsTable extends Migration
             $table->string('type');
             $table->text('options')->nullable();
             $table->text('sorting_number');
+            $table->boolean('enabled')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

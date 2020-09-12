@@ -15,7 +15,8 @@ class CreateSchoolsTable extends Migration
     {
         Schema::create('schools', function (Blueprint $table) {
             $table->id();
-            $table->integer('active')->default(1);
+            // $table->string('');
+            $table->boolean('enabled')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

@@ -13,7 +13,7 @@ class User extends Authenticatable
     use LaratrustUserTrait, Notifiable, SoftDeletes;
 
     protected $table    = 'users';
-    protected $fillable = ['name', 'username', 'email', 'image', 'active', 'password'];
+    protected $fillable = ['name', 'email', 'image', 'active', 'password'];
     protected $appends  = ['image_path'];
     protected $hidden   = ['password', 'remember_token'];
     protected $casts    = ['email_verified_at' => 'datetime', 'created_at' => 'date:Y-m-d'];
