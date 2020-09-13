@@ -22,18 +22,14 @@
 
 <div class="btn-group">
     @if (auth()->user()->hasPermission('create_facilities'))
-    <a href="{{ route('admin.facilities.create') }}">
-        <button class="btn btn-primary mb-2">
-            <i class="feather icon-plus mr-25"></i>
-            {{ trans('admin.create') }}
-        </button>
-    </a>
+    <button type="button" name="create_facility" id="create_facility" class="btn btn-primary mb-2">
+        <i class="feather icon-plus mr-25"></i>
+        {{ trans('admin.create') }}
+    </button>
     @else
-    <a href="#">
-        <button class="btn btn-primary mb-2 disabled">
-            <i class="feather icon-plus"></i> {{ trans('admin.create') }}
-        </button>
-    </a>
+    <button class="btn btn-primary mb-2 disabled">
+        <i class="feather icon-plus"></i> {{ trans('admin.create') }}
+    </button>
     @endif
 </div>
 
@@ -71,13 +67,16 @@
     </section>
 </div>
 
+@include('admin.facilities.form')
+
 @endsection
 
 @push('scripts')
 
 <script type="text/javascript">
-    var status  = '';
+    var status = '';
     $(document).ready(function(){
+        // DataTable
         $('#data-table').DataTable({
             processing: true,
             serverSide: true,
@@ -125,8 +124,103 @@
                 url: getDataTableLanguage()
             }
         });
+        // Create
+        $('#create_facility').click(function(){
+            $('.modal-title').text("Add New facility");
+            $('#action_button').val("Add");
+            $('#facilityForm').trigger("reset");
+            $('#action').val("Add");
+            $('#facilityModal').modal('show');
+        });
+
+    $('#facilityForm').on('submit', function(event){
+        event.preventDefault();
+        if($('#action').val() == 'Add')
+        {
+        $.ajax({
+            url:"{{ route('admin.facilities.store') }}",
+            method:"POST",
+            data: new FormData(this),
+            contentType: false,
+            cache:false,
+            processData: false,
+            dataType:"json",
+            success:function(data)
+            {
+                var html = '';
+                if(data.errors)
+            {
+                html = '<div class="alert alert-danger">';
+                for(var count = 0; count < data.errors.length; count++)
+                    {
+                        html += '<p>' + data.errors[count] + '</p>';
+                    }
+                html += '</div>';
+            }
+            if(data.success)
+            {
+                $('#facilityForm')[0].reset();
+                $('#data-table').DataTable().ajax.reload();
+                $('#facilityModal').modal('hide');
+                toastr.success('Added Done!', 'Success!');
+            }
+                $('#form_result').html(html);
+            }
+        });
+    }
+    if($('#action').val() == "Edit")
+    {
+        $.ajax({
+            url:"{{ route('admin.facilities.update') }}",
+            method:"POST",
+            data:new FormData(this),
+            contentType: false,
+            cache: false,
+            processData: false,
+            dataType:"json",
+            success:function(data)
+            {
+                var html = '';
+                if(data.errors)
+            {
+                html = '<div class="alert alert-danger">';
+                for(var count = 0; count < data.errors.length; count++)
+                {
+                    html += '<p>' + data.errors[count] + '</p>';
+                }
+                html += '</div>';
+            }
+            if(data.success)
+            {
+                $('#facilityForm')[0].reset();
+                $('#data-table').DataTable().ajax.reload();
+                $('#facilityModal').modal('hide');
+                toastr.success('Edited Done!', 'Success!');
+            }
+                $('#form_result').html(html);
+            }
+            });
+        }
     });
 
+    $(document).on('click', '.edit', function(){
+        var id = $(this).attr('id');
+        $('#form_result').html('');
+        $.ajax({
+            url:"/admin/facilities/"+id+"/edit",
+            dataType:"json",
+            success:function(html){
+                $('#name').val(html.data.name);
+                $('#hidden_id').val(html.data.id);
+                $('.modal-title').text("Edit facility");
+                $('#action_button').val("Edit");
+                $('#action').val("Edit");
+                $('#facilityModal').modal('show');
+            }
+        });
+    });
+    });
+    // Delete
     $(document).on('click', '.delete', function(){
         facility_id = $(this).attr('id');
         swal({
@@ -151,6 +245,7 @@
         });
     });
 
+    // Change Status
     function selectStatus(id){
         facility_id = id;
     }

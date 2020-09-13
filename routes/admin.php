@@ -59,7 +59,7 @@ Route::group(
 
             Route::get('contacts/destroy/{id}', 'ContactController@destroy');
 
-            Route::post('facilities/update', 'FacilityController@update');
+            Route::post('facilities/update', 'FacilityController@update')->name('facilities.update');
             Route::get('facilities/destroy/{id}', 'FacilityController@destroy');
             Route::post('facilities/updateStatus/{id}', 'FacilityController@updateStatus');
 
