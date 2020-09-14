@@ -1,10 +1,16 @@
 <!-- BEGIN: Footer-->
 <footer class="footer footer-static footer-light">
-    <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">
-            &copy; {{ trans('admin.all_rights') }}</span>
-        <span class="float-md-right d-none d-md-block"> <a href="https://github.com/mostfaswaisi93">mostfaswaisi93</a>
-            <i class="feather icon-heart pink"></i></span>
-        <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
+    <p class="clearfix blue-grey lighten-2 mb-0">
+        <span class="float-md-left d-block d-md-inline-block mt-25">
+            <b>&copy; {{ trans('admin.all_rights') }}</b>
+        </span>
+        <span class="float-md-right d-none d-md-block">
+            <a href="https://github.com/mostfaswaisi93">mostfaswaisi93</a>
+            <i class="feather icon-heart pink"></i>
+        </span>
+        <button class="btn btn-primary btn-icon scroll-top" type="button">
+            <i class="feather icon-arrow-up"></i>
+        </button>
     </p>
 </footer>
 <!-- END: Footer-->
@@ -39,6 +45,7 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 
 {!! Toastr::message() !!}
+
 <script>
     $(document).ready(function () {
         CKEDITOR.config.language    =  "{{ app()->getLocale() }}";

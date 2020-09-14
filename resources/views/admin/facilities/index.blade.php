@@ -3,18 +3,16 @@
 
 @section('content')
 
-<div class="content-header row">
-    <div class="content-header-left col-md-9 col-12 mb-2">
-        <div class="row breadcrumbs-top">
+<div class="content-header">
+    <div class="breadcrumbs-style mb-2">
+        <div class="breadcrumbs-top row">
             <div class="col-12">
-                <div class="breadcrumb-wrapper col-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
-                        </li>
-                        <li class="breadcrumb-item active">{{ trans('admin.facilities') }}</li>
-                    </ol>
-                </div>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
+                    </li>
+                    <li class="breadcrumb-item active">{{ trans('admin.facilities') }}</li>
+                </ol>
             </div>
         </div>
     </div>
