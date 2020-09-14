@@ -15,8 +15,8 @@ class CreateFacilitiesTable extends Migration
     {
         Schema::create('facilities', function (Blueprint $table) {
             $table->id();
+            $table->string('icon');
             $table->boolean('enabled')->default(1);
-            $table->string('image');
             $table->timestamps();
             $table->softDeletes();
         });

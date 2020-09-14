@@ -1,6 +1,40 @@
 <!-- Facility Modal -->
 
-<div id="facilityModal" class="modal fade" role="dialog">
+<div class="modal fade" id="facilityModal" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span id="form_result"></span>
+                <form method="post" id="facilityForm" class="form-horizontal" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name" class="col-form-label">{{ trans('admin.name') }}:</label>
+                        <input type="text" id="name" name="name" class="form-control"
+                            placeholder="{{ trans('admin.name') }}">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" name="action" id="action" />
+                <input type="hidden" name="hidden_id" id="hidden_id" />
+                <button type="submit" class="btn btn-success" id="action_button" name="action_button" value="Add">
+                    {{ trans('admin.save') }}
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                    {{ trans('admin.close') }}
+                </button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="" class="modal fade" role="dialog">
     <div class="modal-dialog modal-md">
         <!-- Modal content-->
         <div class="modal-content">
@@ -42,9 +76,8 @@
 </div>
 
 
-@include('partials._errors')
-<form action="{{ route('admin.facilities.store') }}" method="post"
-    enctype="multipart/form-data">
+{{-- @include('partials._errors')
+<form action="{{ route('admin.facilities.store') }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('POST')
     <div class="row">
@@ -53,24 +86,21 @@
             <div class="form-group">
                 <label>{{ trans('admin.' . $locale . '.name') }}</label>
                 <input id="name" type="text" name="{{ $locale }}[name]" class="form-control"
-                    value="{{ old($locale . '.name') }}"
-                    placeholder="{{ trans('admin.' . $locale . '.name') }}">
+                    value="{{ old($locale . '.name') }}" placeholder="{{ trans('admin.' . $locale . '.name') }}">
             </div>
         </div>
         @endforeach
         <div class="col-md-6 col-12">
             <div class="media mb-2">
                 <a class="mr-2 my-25" href="#">
-                    <img src="{{ asset('uploads/facility_images/default.png') }}"
-                        alt="users avatar"
-                        class="users-avatar-shadow rounded image img-thumbnail image-preview"
-                        height="70" width="70">
+                    <img src="{{ asset('uploads/facility_images/default.png') }}" alt="users avatar"
+                        class="users-avatar-shadow rounded image img-thumbnail image-preview" height="70" width="70">
                 </a>
                 <div class="media-body mt-50">
                     <label>{{ trans('admin.facility_image') }}</label>
                     <div class="col-12 d-flex mt-1 px-0">
-                        <input type="file" class="form-control-file image" name="image"
-                            id="image" style="display:none;">
+                        <input type="file" class="form-control-file image" name="image" id="image"
+                            style="display:none;">
                         <button class="btn btn-primary" onclick="FileUpload();">
                             <i class="fa fa-plus"></i>
                             {{ trans('admin.file_upload') }}
@@ -92,4 +122,4 @@
             </div>
         </div>
     </div>
-</form>
+</form> --}}

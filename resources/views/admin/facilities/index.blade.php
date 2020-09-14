@@ -126,7 +126,7 @@
         });
         // Create
         $('#create_facility').click(function(){
-            $('.modal-title').text("Add New facility");
+            $('.modal-title').text("{{ trans('admin.create_facility') }}");
             $('#action_button').val("Add");
             $('#facilityForm').trigger("reset");
             $('#action').val("Add");
@@ -212,7 +212,7 @@
             success:function(html){
                 $('#name').val(html.data.name);
                 $('#hidden_id').val(html.data.id);
-                $('.modal-title').text("Edit facility");
+                $('.modal-title').text("{{ trans('admin.edit_facility') }}");
                 $('#action_button').val("Edit");
                 $('#action').val("Edit");
                 $('#facilityModal').modal('show');
