@@ -26,7 +26,8 @@
     </button>
     @else
     <button class="btn btn-primary mb-2 disabled">
-        <i class="feather icon-plus"></i> {{ trans('admin.create') }}
+        <i class="feather icon-plus"></i>
+        {{ trans('admin.create') }}
     </button>
     @endif
 </div>

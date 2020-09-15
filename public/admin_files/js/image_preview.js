@@ -13,6 +13,7 @@ $(".image").change(function() {
 
 });
 
+// Icon Preview
 $(".icon").change(function() {
 
     if (this.files && this.files[0]) {
@@ -24,5 +25,6 @@ $(".icon").change(function() {
 
         reader.readAsDataURL(this.files[0]);
     }
+    $('.icon-preview').show();
 
 });

@@ -36,7 +36,7 @@
 <!-- END: Theme JS-->
 
 {{-- Custom js --}}
-<script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>
+<script src="{{ asset('admin_files/js/image_preview.js') }}"></script>
 
 {{-- CDN --}}
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
@@ -49,7 +49,6 @@
 <script>
     $(document).ready(function () {
         CKEDITOR.config.language    =  "{{ app()->getLocale() }}";
-        CKEDITOR.config.height      =  '5em';
     });
 
     function FileUpload() {

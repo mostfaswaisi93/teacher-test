@@ -1,6 +1,6 @@
 <!-- Facility Modal -->
 
-<div class="modal fade" id="facilityModal" role="dialog" aria-hidden="true">
+<div class="modal fade in" id="facilityModal" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <!-- Modal content-->
         <div class="modal-content">
@@ -10,40 +10,45 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+            <!-- Modal body-->
             <div class="modal-body">
                 <span id="form_result"></span>
                 <form method="post" id="facilityForm" class="form-horizontal" enctype="multipart/form-data">
                     @csrf
-                    @foreach (config('translatable.locales') as $locale)
-                    <div class="form-group">
-                        <label>{{ trans('admin.' . $locale . '.name') }}</label>
-                        <input type="text" id="name" name="{{ $locale }}[name]" class="form-control"
-                            value="{{ old($locale . '.name') }}"
-                            placeholder="{{ trans('admin.' . $locale . '.name') }}">
-                    </div>
-                    @endforeach
-                    <div class="form-group">
-                        <label for="b_enabled">الحالة</label>
-                        <select id="b_enabled" name="b_enabled" class="form-control">
-                            <option value="1">فعال</option>
-                            <option value="0">معطل</option>
-                        </select>
-                    </div>
-                    <div class="media">
-                        <div class="form-group">
-                            <label for="b_enabled">الصورة</label>
-                            <div class="col-12 d-flex mt-1 px-0">
-                                <input type="file" class="form-control-file image" name="image" id="image"
-                                    style="display:none;">
-                                <button class="btn btn-primary" onclick="FileUpload();">
-                                    <i class="fa fa-plus"></i>
-                                    {{ trans('admin.file_upload') }}
-                                </button>
+                    <div class="row">
+                        @foreach (config('translatable.locales') as $locale)
+                        <div class="form-group col-md-6">
+                            <label>{{ trans('admin.' . $locale . '.name') }}</label>
+                            <input type="text" id="name" name="{{ $locale }}[name]" class="form-control"
+                                value="{{ old($locale . '.name') }}"
+                                placeholder="{{ trans('admin.' . $locale . '.name') }}">
+                        </div>
+                        @endforeach
+                        <div class="form-group col-md-6">
+                            <label for="b_enabled">الحالة</label>
+                            <select id="b_enabled" name="b_enabled" class="form-control">
+                                <option value="1">فعال</option>
+                                <option value="0">معطل</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6"></div>
+                        <div class="col-md-6 col-12">
+                            <div class="media mb-2">
+                                <div class="media-body">
+                                    <label>{{ trans('admin.icon') }}:</label>
+                                    <div>
+                                        <input type="file" class="form-control-file icon" name="icon" id="icon"
+                                            style="display:none;">
+                                        <button class="btn btn-primary" onclick="IconUpload();">
+                                            <i class="fa fa-plus"></i>
+                                            {{ trans('admin.file_upload') }}
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="clearfix"></div>
-                            <br>
-                            <img class="users-avatar-shadow rounded image img-thumbnail image-preview" height="70"
-                                style="display: none;">
+                            <div class="media mb-2">
+                                <img class="icon-preview" height="70" style="display: none;" />
+                            </div>
                         </div>
                     </div>
             </div>
