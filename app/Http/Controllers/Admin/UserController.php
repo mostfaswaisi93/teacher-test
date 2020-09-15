@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\User;
+use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
-use Brian2694\Toastr\Facades\Toastr;
 
 class UserController extends Controller
 {
@@ -53,12 +53,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'          => 'required',
-            'username'      => 'required|unique:users',
-            'email'         => 'required|unique:users',
-            'image'         => 'image',
-            'password'      => 'required|confirmed',
-            'permissions'   => 'required|min:1'
+            'name' => 'required',
+            'username' => 'required|unique:users',
+            'email' => 'required|unique:users',
+            'image' => 'image',
+            'password' => 'required|confirmed',
+            'permissions' => 'required|min:1',
         ]);
 
         $request_data = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
@@ -89,11 +89,11 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'name'          => 'required',
-            'username'      => ['required', Rule::unique('users')->ignore($user->id)],
-            'email'         => ['required', Rule::unique('users')->ignore($user->id)],
-            'image'         => 'image',
-            'permissions'   => 'required|min:1'
+            'name' => 'required',
+            'username' => ['required', Rule::unique('users')->ignore($user->id)],
+            'email' => ['required', Rule::unique('users')->ignore($user->id)],
+            'image' => 'image',
+            'permissions' => 'required|min:1',
         ]);
 
         $request_data = $request->except(['permissions', 'image']);
@@ -128,13 +128,13 @@ class UserController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        $user           = User::find($id);
-        $active         = $request->get('active');
-        $user->active   = $active;
-        $user           = $user->save();
+        $user = User::find($id);
+        $active = $request->get('active');
+        $user->active = $active;
+        $user = $user->save();
 
         if ($user) {
-            return response(['success' => TRUE, "message" => 'Done']);
+            return response(['success' => true, "message" => 'Done']);
         }
     }
 }

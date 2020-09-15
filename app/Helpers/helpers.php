@@ -1,7 +1,7 @@
 <?php
 
-use \App\Models\Setting as setting;
 use \App\Models\Contact as contact;
+use \App\Models\Setting as setting;
 
 if (!function_exists('getSettings')) {
     function getSettings($name = 'site_title')

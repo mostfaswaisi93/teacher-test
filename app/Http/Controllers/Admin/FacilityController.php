@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Facility;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Validation\Rule;
+use App\Models\Facility;
 use Brian2694\Toastr\Facades\Toastr;
-use Intervention\Image\Facades\Image;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
+use Intervention\Image\Facades\Image;
 use Validator;
 
 class FacilityController extends Controller
@@ -48,7 +48,7 @@ class FacilityController extends Controller
         $rules = [];
 
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name'  => 'required|unique:facility_translations,name'];
+            $rules += [$locale . '.name' => 'required|unique:facility_translations,name'];
         }
 
         $request->validate($rules);
@@ -112,13 +112,13 @@ class FacilityController extends Controller
 
     public function updateStatus(Request $request, $id)
     {
-        $facility           = Facility::find($id);
-        $active             = $request->get('active');
-        $facility->active   = $active;
-        $facility           = $facility->save();
+        $facility = Facility::find($id);
+        $active = $request->get('active');
+        $facility->active = $active;
+        $facility = $facility->save();
 
         if ($facility) {
-            return response(['success' => TRUE, "message" => 'Done']);
+            return response(['success' => true, "message" => 'Done']);
         }
     }
 }
@@ -149,7 +149,7 @@ class SkillController extends Controller
     public function store(Request $request)
     {
         $rules = array(
-            'name' => 'required'
+            'name' => 'required',
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -173,7 +173,7 @@ class SkillController extends Controller
     public function update(Request $request)
     {
         $rules = array(
-            'name' => 'required'
+            'name' => 'required',
         );
 
         $error = Validator::make($request->all(), $rules);

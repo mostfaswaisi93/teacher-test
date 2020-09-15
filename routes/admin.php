@@ -3,36 +3,36 @@
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
     ],
     function () {
         Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
             Route::get('/', 'AdminController@index')->name('index');
 
             Route::resources([
-                'banners'           => BannerController::class,
-                'schools'           => SchoolController::class,
-                'teachers'          => TeacherController::class,
-                'parents'           => ParentController::class,
-                'students'          => StudentController::class,
-                'reservations'      => ReservationController::class,
-                'subjects'          => SubjectController::class,
-                'packages'          => PackageController::class,
-                'notifications'     => NotificationController::class,
-                'contacts'          => ContactController::class,
-                'facilities'        => FacilityController::class,
-                'grades'            => GradeController::class,
-                'sub_grades'        => SubGradeController::class,
-                'discounts'         => DiscountController::class,
-                'qualifications'    => QualificationController::class,
-                'rates'             => RateController::class,
-                'edu_types'         => EduTypeController::class,
-                'acceptance_terms'  => AcceptanceTermController::class,
-                'payment_methods'   => PaymentMethodController::class,
-                'countries'         => CountryController::class,
-                'cities'            => CityController::class,
-                'roles'             => RoleController::class,
-                'users'             => UserController::class,
+                'banners' => BannerController::class,
+                'schools' => SchoolController::class,
+                'teachers' => TeacherController::class,
+                'parents' => ParentController::class,
+                'students' => StudentController::class,
+                'reservations' => ReservationController::class,
+                'subjects' => SubjectController::class,
+                'packages' => PackageController::class,
+                'notifications' => NotificationController::class,
+                'contacts' => ContactController::class,
+                'facilities' => FacilityController::class,
+                'grades' => GradeController::class,
+                'sub_grades' => SubGradeController::class,
+                'discounts' => DiscountController::class,
+                'qualifications' => QualificationController::class,
+                'rates' => RateController::class,
+                'edu_types' => EduTypeController::class,
+                'acceptance_terms' => AcceptanceTermController::class,
+                'payment_methods' => PaymentMethodController::class,
+                'countries' => CountryController::class,
+                'cities' => CityController::class,
+                'roles' => RoleController::class,
+                'users' => UserController::class,
             ]);
 
             Route::get('banners/destroy/{id}', 'BannerController@destroy');
