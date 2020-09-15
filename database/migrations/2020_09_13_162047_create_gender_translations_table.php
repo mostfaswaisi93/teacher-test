@@ -15,7 +15,11 @@ class CreateGenderTranslationsTable extends Migration
     {
         Schema::create('gender_translations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('gender_id')->unsigned()->onDelete('cascade');
+            $table->string('name');
+            $table->string('locale')->index();
+
+            $table->unique(['gender_id', 'locale']);
         });
     }
 
