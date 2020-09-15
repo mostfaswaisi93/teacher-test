@@ -13,6 +13,7 @@
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
+                    {{-- Start Language --}}
                     <li class="dropdown dropdown-language nav-item">
                         @if(app()->getLocale() == 'en')
                         <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown"
@@ -49,6 +50,25 @@
                             @endforeach
                         </div>
                     </li>
+                    {{-- End Language --}}
+                    {{-- Start Search --}}
+                    <li class="nav-item nav-search">
+                        <a class="nav-link nav-link-search">
+                            <i class="ficon feather icon-search"></i>
+                        </a>
+                        <div class="search-input">
+                            <div class="search-input-icon">
+                                <i class="feather icon-search primary"></i>
+                            </div>
+                            <input class="input" type="text" placeholder="..." tabindex="-1"
+                                data-search="template-list">
+                            <div class="search-input-close">
+                                <i class="feather icon-x"></i>
+                            </div>
+                            <ul class="search-list search-list-main"></ul>
+                        </div>
+                    </li>
+                    {{-- End Search --}}
                     {{-- Start Notifications --}}
                     <li class="dropdown dropdown-notification nav-item">
                         <a class="nav-link nav-link-label" href="#" data-toggle="dropdown">
@@ -81,6 +101,7 @@
                         </ul>
                     </li>
                     {{-- End Notifications --}}
+                    {{-- Start User --}}
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none">
@@ -111,6 +132,7 @@
                             </form>
                         </div>
                     </li>
+                    {{-- End User --}}
                 </ul>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <!-- Facility Modal -->
 
-<div class="modal fade in" id="facilityModal" role="dialog" aria-hidden="true">
+<div class="modal fade" id="facilityModal" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-md">
         <!-- Modal content-->
         <div class="modal-content">
@@ -13,20 +13,21 @@
             <!-- Modal body-->
             <div class="modal-body">
                 <span id="form_result"></span>
-                <form method="post" id="facilityForm" class="form-horizontal" enctype="multipart/form-data">
+                <form method="POST" id="facilityForm" class="form-horizontal" accept-charset="UTF-8"
+                    enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         @foreach (config('translatable.locales') as $locale)
                         <div class="form-group col-md-6">
                             <label>{{ trans('admin.' . $locale . '.name') }}</label>
-                            <input type="text" id="name" name="{{ $locale }}[name]" class="form-control"
+                            <input type="text" id="{{ $locale }}[name]" name="{{ $locale }}[name]" class="form-control"
                                 value="{{ old($locale . '.name') }}"
                                 placeholder="{{ trans('admin.' . $locale . '.name') }}">
                         </div>
                         @endforeach
                         <div class="form-group col-md-6">
-                            <label for="b_enabled">الحالة</label>
-                            <select id="b_enabled" name="b_enabled" class="form-control">
+                            <label for="enabled">{{ trans('admin.status') }}</label>
+                            <select id="enabled" name="enabled" class="form-control">
                                 <option value="1">فعال</option>
                                 <option value="0">معطل</option>
                             </select>
@@ -35,7 +36,7 @@
                         <div class="col-md-6 col-12">
                             <div class="media mb-2">
                                 <div class="media-body">
-                                    <label>{{ trans('admin.icon') }}:</label>
+                                    <label>{{ trans('admin.icon') }}</label>
                                     <div>
                                         <input type="file" class="form-control-file icon" name="icon" id="icon"
                                             style="display:none;">
@@ -52,6 +53,7 @@
                         </div>
                     </div>
             </div>
+            <!-- Modal footer-->
             <div class="modal-footer">
                 <input type="hidden" name="action" id="action" />
                 <input type="hidden" name="hidden_id" id="hidden_id" />

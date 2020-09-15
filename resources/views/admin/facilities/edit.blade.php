@@ -3,27 +3,6 @@
 
 @section('content')
 
-<div class="content-header row">
-    <div class="content-header-left col-md-9 col-12 mb-2">
-        <div class="row breadcrumbs-top">
-            <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">{{ trans('admin.edit_facility') }}</h2>
-                <div class="breadcrumb-wrapper col-12">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('admin.facilities.index') }}">{{ trans('admin.facilities') }}</a>
-                        </li>
-                        <li class="breadcrumb-item active">{{ trans('admin.edit_facility') }}</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div class="content-body">
     <section class="portlet">
         <div class="row">

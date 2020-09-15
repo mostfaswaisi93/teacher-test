@@ -11,12 +11,16 @@ label {
 
 .btn-default {
     color: #666666;
-    background-color: #E6E6E6;
+    background-color: #e6e6e6;
     border-color: #ccc;
 }
 
 .btn:hover {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-success {
+    background-color: #1caf9a !important;
 }
 
 
@@ -36,6 +40,7 @@ label {
 
 .breadcrumb {
     border-right: unset;
+    border-left: unset;
 }
 
 .content-header .breadcrumbs-style {

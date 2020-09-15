@@ -67,11 +67,12 @@ return [
     'status'                    => 'الحالة',
     'language'                  => 'اللغة',
     'user_image'                => 'صورة مستخدم',
-    'icon'                      => 'أيقونة',
+    'icon'                      => 'الأيقونة',
     'file_upload'               => 'استعراض',
     'icon_upload'               => 'إضافة أيقونة',
     'action'                    => 'خيارات',
 
+    'enabled'                   => 'مفعل',
     'active'                    => 'مفعل',
     'inactive'                  => 'غير مفعل',
 

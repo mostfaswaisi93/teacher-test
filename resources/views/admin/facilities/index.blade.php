@@ -123,7 +123,7 @@
                 url: getDataTableLanguage()
             }
         });
-        // Create
+        // Open Modal
         $('#create_facility').click(function(){
             $('.modal-title').text("{{ trans('admin.create_facility') }}");
             $('#action_button').val("Add");
@@ -136,89 +136,92 @@
         event.preventDefault();
         if($('#action').val() == 'Add')
         {
-        $.ajax({
-            url:"{{ route('admin.facilities.store') }}",
-            method:"POST",
-            data: new FormData(this),
-            contentType: false,
-            cache:false,
-            processData: false,
-            dataType:"json",
-            success:function(data)
-            {
-                var html = '';
-                if(data.errors)
-            {
-                html = '<div class="alert alert-danger">';
-                for(var count = 0; count < data.errors.length; count++)
+            $.ajax({
+                url:"{{ route('admin.facilities.store') }}",
+                method:"POST",
+                data: new FormData(this),
+                contentType: false,
+                cache:false,
+                processData: false,
+                dataType:"json",
+                success:function(data)
+                {
+                    var html = '';
+                    if(data.errors)
+                {
+                    html = '<div class="alert alert-danger">';
+                    for(var count = 0; count < data.errors.length; count++)
+                        {
+                            html += '<p>' + data.errors[count] + '</p>';
+                        }
+                    html += '</div>';
+                }
+                if(data.success)
+                {
+                    $('#facilityForm')[0].reset();
+                    $('#data-table').DataTable().ajax.reload();
+                    $('#facilityModal').modal('hide');
+                    toastr.success('Added Done!', 'Success!');
+                }
+                    $('#form_result').html(html);
+                }
+            });
+        }
+        if($('#action').val() == "Edit")
+        {
+            $.ajax({
+                url:"{{ route('admin.facilities.update') }}",
+                method:"POST",
+                data:new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType:"json",
+                success:function(data)
+                {
+                    var html = '';
+                    if(data.errors)
+                {
+                    html = '<div class="alert alert-danger">';
+                    for(var count = 0; count < data.errors.length; count++)
                     {
                         html += '<p>' + data.errors[count] + '</p>';
                     }
-                html += '</div>';
-            }
-            if(data.success)
-            {
-                $('#facilityForm')[0].reset();
-                $('#data-table').DataTable().ajax.reload();
-                $('#facilityModal').modal('hide');
-                toastr.success('Added Done!', 'Success!');
-            }
-                $('#form_result').html(html);
+                    html += '</div>';
+                }
+                if(data.success)
+                {
+                    $('#facilityForm')[0].reset();
+                    $('#data-table').DataTable().ajax.reload();
+                    $('#facilityModal').modal('hide');
+                    toastr.success('Edited Done!', 'Success!');
+                }
+                    $('#form_result').html(html);
+                }
+                });
             }
         });
-    }
-    if($('#action').val() == "Edit")
-    {
-        $.ajax({
-            url:"{{ route('admin.facilities.update') }}",
-            method:"POST",
-            data:new FormData(this),
-            contentType: false,
-            cache: false,
-            processData: false,
-            dataType:"json",
-            success:function(data)
-            {
-                var html = '';
-                if(data.errors)
-            {
-                html = '<div class="alert alert-danger">';
-                for(var count = 0; count < data.errors.length; count++)
-                {
-                    html += '<p>' + data.errors[count] + '</p>';
+
+        $(document).on('click', '.edit', function(){
+            var id = $(this).attr('id');
+            $('#form_result').html('');
+            $.ajax({
+                url:"/admin/facilities/"+id+"/edit",
+                dataType:"json",
+                success:function(html){
+                    $('#name').val(html.data.name);
+                    $('#icon').val(html.data.icon);
+                    $('#hidden_id').val(html.data.id);
+                    $('.modal-title').text("{{ trans('admin.edit_facility') }}");
+                    $('#action_button').val("Edit");
+                    $('#action').val("Edit");
+                    $('#facilityModal').modal('show');
                 }
-                html += '</div>';
-            }
-            if(data.success)
-            {
-                $('#facilityForm')[0].reset();
-                $('#data-table').DataTable().ajax.reload();
-                $('#facilityModal').modal('hide');
-                toastr.success('Edited Done!', 'Success!');
-            }
-                $('#form_result').html(html);
-            }
             });
-        }
+        });
+    
     });
 
-    $(document).on('click', '.edit', function(){
-        var id = $(this).attr('id');
-        $('#form_result').html('');
-        $.ajax({
-            url:"/admin/facilities/"+id+"/edit",
-            dataType:"json",
-            success:function(html){
-                $('#name').val(html.data.name);
-                $('#hidden_id').val(html.data.id);
-                $('.modal-title').text("{{ trans('admin.edit_facility') }}");
-                $('#action_button').val("Edit");
-                $('#action').val("Edit");
-                $('#facilityModal').modal('show');
-            }
-        });
-    });
-    });
     // Delete
     $(document).on('click', '.delete', function(){
         facility_id = $(this).attr('id');

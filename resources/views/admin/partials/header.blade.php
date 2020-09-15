@@ -36,10 +36,6 @@
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/css/core/colors/palette-gradient.css') }}">
     <!-- END: Page CSS-->
 
-    <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/assets/css/style.css') }}">
-    <!-- END: Custom CSS-->
-
     @else
 
     <!-- BEGIN: Vendor CSS-->
@@ -62,7 +58,6 @@
     
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/css-rtl/custom-rtl.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/assets/css/style-rtl.css') }}">
     <!-- END: Custom CSS-->
         
     <link rel="stylesheet" type="text/css" href="{{url('/css/styles-rtl.css')}}">
