@@ -69,7 +69,7 @@ class UserController extends Controller
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
-                ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+                ->save(public_path('uploads/images/' . $request->image->hashName()));
             $request_data['image'] = $request->image->hashName();
         }
 
@@ -99,14 +99,14 @@ class UserController extends Controller
         $request_data = $request->except(['permissions', 'image']);
         if ($request->image) {
             if ($user->image != 'default.png') {
-                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+                Storage::disk('public_uploads')->delete('/images/' . $user->image);
             }
 
             Image::make($request->image)
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
-                ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+                ->save(public_path('uploads/images/' . $request->image->hashName()));
             $request_data['image'] = $request->image->hashName();
         }
 
@@ -121,7 +121,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         if ($user->image != 'default.png') {
-            Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+            Storage::disk('public_uploads')->delete('/images/' . $user->image);
         }
         $user->delete();
     }

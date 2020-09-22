@@ -66,7 +66,7 @@ class FacilityController extends Controller
             'enabled' => $request->enabled,
         );
 
-        Facility::create($request_data);
+        Facility::create($form_data);
         Toastr::success(__('admin.added_successfully'));
         return response()->json(['success' => __('admin.added_successfully')]);
     }

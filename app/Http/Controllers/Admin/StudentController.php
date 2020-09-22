@@ -58,7 +58,7 @@ class StudentController extends Controller
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
-                ->save(public_path('uploads/facility_images/' . $request->image->hashName()));
+                ->save(public_path('uploads/images/' . $request->image->hashName()));
             $request_data['image'] = $request->image->hashName();
         }
 
@@ -85,13 +85,13 @@ class StudentController extends Controller
 
         if ($request->image) {
             if ($facility->image != 'default.png') {
-                Storage::disk('public_uploads')->delete('/facility_images/' . $facility->image);
+                Storage::disk('public_uploads')->delete('/images/' . $facility->image);
             }
             Image::make($request->image)
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
-                ->save(public_path('uploads/facility_images/' . $request->image->hashName()));
+                ->save(public_path('uploads/images/' . $request->image->hashName()));
             $request_data['image'] = $request->image->hashName();
         }
 
@@ -104,7 +104,7 @@ class StudentController extends Controller
     {
         $facility = Facility::findOrFail($id);
         if ($facility->image != 'default.png') {
-            Storage::disk('public_uploads')->delete('/facility_images/' . $facility->image);
+            Storage::disk('public_uploads')->delete('/images/' . $facility->image);
         }
         $facility->delete();
     }
