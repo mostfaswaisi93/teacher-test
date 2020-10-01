@@ -29,7 +29,7 @@
                     <span class="title">{{ trans('admin.home') }}</span>
                 </a>
             </li>
-            @if (auth()->user()->hasPermission('read_banners'))
+            @if (auth()->user()->hasPermission('banners_read'))
             <li {{ request()->route()->getName() === 'admin.banners.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.banners.index') }}" class="nav-link">
                     <i class="fa fa-photo"></i>
@@ -37,7 +37,7 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_schools'))
+            @if (auth()->user()->hasPermission('schools_read'))
             <li {{ request()->route()->getName() === 'admin.schools.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.schools.index') }}" class="nav-link">
                     <i class="fa fa-building-o"></i>
@@ -45,7 +45,7 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_teachers'))
+            @if (auth()->user()->hasPermission('teachers_read'))
             <li {{ request()->route()->getName() === 'admin.teachers.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.teachers.index') }}" class="nav-link">
                     <i class="feather icon-users"></i>
@@ -53,7 +53,7 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_parents'))
+            @if (auth()->user()->hasPermission('parents_read'))
             <li {{ request()->route()->getName() === 'admin.parents.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.parents.index') }}" class="nav-link">
                     <i class="feather icon-users"></i>
@@ -61,7 +61,7 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_students'))
+            @if (auth()->user()->hasPermission('students_read'))
             <li {{ request()->route()->getName() === 'admin.students.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.students.index') }}" class="nav-link">
                     <i class="fa fa-graduation-cap"></i>
@@ -69,7 +69,7 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_reservations'))
+            @if (auth()->user()->hasPermission('reservations_read'))
             <li {{ request()->route()->getName() === 'admin.reservations.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.reservations.index') }}" class="nav-link">
                     <i class="fa fa-photo"></i>
@@ -77,7 +77,7 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_subjects'))
+            @if (auth()->user()->hasPermission('subjects_read'))
             <li {{ request()->route()->getName() === 'admin.subjects.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.subjects.index') }}" class="nav-link">
                     <i class="fa fa-book"></i>
@@ -85,7 +85,7 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_packages'))
+            @if (auth()->user()->hasPermission('packages_read'))
             <li {{ request()->route()->getName() === 'admin.packages.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.packages.index') }}" class="nav-link">
                     <i class="fa fa-list"></i>
@@ -93,7 +93,7 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_notifications'))
+            @if (auth()->user()->hasPermission('notifications_read'))
             <li {{ request()->route()->getName() === 'admin.notifications.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.notifications.index') }}" class="nav-link">
                     <i class="fa fa-bell"></i>
@@ -101,7 +101,7 @@
                 </a>
             </li>
             @endif
-            @if (auth()->user()->hasPermission('read_contacts'))
+            @if (auth()->user()->hasPermission('contacts_read'))
             <li {{ request()->route()->getName() === 'admin.contacts.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.contacts.index') }}" class="nav-link">
                     <i class="ficon feather icon-mail"></i>
@@ -116,7 +116,7 @@
                     {{-- <span class="badge badge badge-primary badge-pill float-right mr-2">New</span> --}}
                 </a>
                 <ul class="menu-content">
-                    @if (auth()->user()->hasPermission('read_facilities'))
+                    @if (auth()->user()->hasPermission('facilities_read'))
                     <li {{ request()->route()->getName() === 'admin.facilities.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.facilities.index') }}" class="nav-link">
                             <i class="fa fa-list"></i>
@@ -124,7 +124,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_grades'))
+                    @if (auth()->user()->hasPermission('grades_read'))
                     <li {{ request()->route()->getName() === 'admin.grades.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.grades.index') }}" class="nav-link">
                             <i class="fa fa-list"></i>
@@ -132,7 +132,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_sub_grades'))
+                    @if (auth()->user()->hasPermission('sub_grades_read'))
                     <li {{ request()->route()->getName() === 'admin.sub_grades.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.sub_grades.index') }}" class="nav-link">
                             <i class="fa fa-list"></i>
@@ -140,7 +140,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_countries'))
+                    @if (auth()->user()->hasPermission('countries_read'))
                     <li {{ request()->route()->getName() === 'admin.countries.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.countries.index') }}" class="nav-link">
                             <i class="fa fa-flag"></i>
@@ -148,7 +148,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_cities'))
+                    @if (auth()->user()->hasPermission('cities_read'))
                     <li {{ request()->route()->getName() === 'admin.cities.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.cities.index') }}" class="nav-link">
                             <i class="fa fa-building-o"></i>
@@ -156,7 +156,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_payment_methods'))
+                    @if (auth()->user()->hasPermission('payment_methods_read'))
                     <li {{ request()->route()->getName() === 'admin.payment_methods.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.payment_methods.index') }}" class="nav-link">
                             <i class="fa fa-money"></i>
@@ -164,7 +164,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_edu_types'))
+                    @if (auth()->user()->hasPermission('edu_types_read'))
                     <li {{ request()->route()->getName() === 'admin.edu_types.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.edu_types.index') }}" class="nav-link">
                             <i class="fa fa-list"></i>
@@ -172,7 +172,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_discounts'))
+                    @if (auth()->user()->hasPermission('discounts_read'))
                     <li {{ request()->route()->getName() === 'admin.discounts.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.discounts.index') }}" class="nav-link">
                             <i class="fa fa-list"></i>
@@ -180,7 +180,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_acceptance_terms'))
+                    @if (auth()->user()->hasPermission('acceptance_terms_read'))
                     <li {{ request()->route()->getName() === 'admin.acceptance_terms.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.acceptance_terms.index') }}" class="nav-link">
                             <i class="fa fa-list"></i>
@@ -188,7 +188,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_rates'))
+                    @if (auth()->user()->hasPermission('rates_read'))
                     <li {{ request()->route()->getName() === 'admin.rates.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.rates.index') }}" class="nav-link">
                             <i class="fa fa-list"></i>
@@ -196,7 +196,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_qualifications'))
+                    @if (auth()->user()->hasPermission('qualifications_read'))
                     <li {{ request()->route()->getName() === 'admin.qualifications.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.qualifications.index') }}" class="nav-link">
                             <i class="fa fa-list"></i>
@@ -206,14 +206,14 @@
                     @endif
                 </ul>
             </li>
-            @if (auth()->user()->hasPermission('read_users'))
+            @if (auth()->user()->hasPermission('users_read'))
             <li class="nav-item">
                 <a href="#">
                     <i class="feather icon-users"></i>
                     <span class="menu-title">{{ trans('admin.users_management') }}</span>
                 </a>
                 <ul class="menu-content">
-                    @if (auth()->user()->hasPermission('read_users'))
+                    @if (auth()->user()->hasPermission('users_read'))
                     <li {{ request()->route()->getName() === 'admin.users.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.users.index') }}" class="nav-link">
                             <i class="feather icon-users"></i>
@@ -221,7 +221,7 @@
                         </a>
                     </li>
                     @endif
-                    @if (auth()->user()->hasPermission('read_roles'))
+                    @if (auth()->user()->hasPermission('roles_read'))
                     <li {{ request()->route()->getName() === 'admin.roles.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.roles.index') }}" class="nav-link">
                             <i class="fa fa-sliders"></i>
@@ -264,7 +264,7 @@
                     </li>
                 </ul>
             </li>
-            @if (auth()->user()->hasPermission('read_settings'))
+            @if (auth()->user()->hasPermission('settings_read'))
             <li {{ request()->route()->getName() === 'admin.settings.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.settings.index') }}" class="nav-link">
                     <i class="feather icon-settings"></i>

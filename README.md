@@ -1,1 +1,0 @@
-## Laravel - Teacher System
