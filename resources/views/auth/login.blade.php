@@ -10,7 +10,7 @@
     <meta name="description" content="Laravel - Teacher System">
     <meta name="keywords" content="Laravel - Teacher System">
     <meta name="author" content="PIXINVENT">
-    <title>{{ trans('admin.teacher_title') }} | {{ trans('admin.login') }}</title>
+    <title>{{ trans('admin.sitename') }} | {{ trans('admin.login') }}</title>
     <link rel="apple-touch-icon" href="{{ url('admin_files/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('admin_files/app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">

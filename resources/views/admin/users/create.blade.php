@@ -92,7 +92,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="media mb-2">
                                             <a class="mr-2 my-25" href="#">
-                                                <img src="{{ asset('uploads/user_images/default.png') }}"
+                                                <img src="{{ asset('images/user_images/default.png') }}"
                                                     alt="users avatar"
                                                     class="users-avatar-shadow rounded image img-thumbnail image-preview"
                                                     height="70" width="70">

@@ -28,12 +28,12 @@ class User extends Authenticatable
 
     public function scopeActive($query)
     {
-        return $query->where('active', 1);
+        return $query->where('enabled', 1);
     }
 
     public function scopeInactive($query)
     {
-        return $query->where('active', 0);
+        return $query->where('enabled', 0);
     }
 
     public function getImagePathAttribute()

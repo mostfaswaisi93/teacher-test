@@ -9,17 +9,17 @@ class BaseModel extends Model
 {
     use SoftDeletes;
 
-    public $timestamps = true;
-    protected $casts = ['created_at' => 'date:Y-m-d'];
-    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    public $timestamps  = true;
+    protected $casts    = ['created_at' => 'date:Y-m-d'];
+    protected $dates    = ['created_at', 'updated_at', 'deleted_at'];
 
     public function scopeActive($query)
     {
-        return $query->where('active', 1);
+        return $query->where('enabled', 1);
     }
 
     public function scopeInactive($query)
     {
-        return $query->where('active', 0);
+        return $query->where('enabled', 0);
     }
 }

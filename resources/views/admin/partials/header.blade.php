@@ -9,7 +9,7 @@
     <meta name="description" content="Laravel - Teacher System">
     <meta name="keywords" content="Laravel - Teacher System">
     <meta name="author" content="PIXINVENT">
-    <title>{{ trans('admin.teacher_title') }} | @yield('title')</title>
+    <title>{{ trans('admin.sitename') }} | @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="apple-touch-icon" href="{{ url('admin_files/app-assets/images/ico/apple-icon-120.png') }}">

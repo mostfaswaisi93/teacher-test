@@ -19,7 +19,7 @@
 </div>
 
 <div class="btn-group">
-    @if (auth()->user()->hasPermission('create_facilities'))
+    @if (auth()->user()->hasPermission('facilities_create'))
     <button type="button" name="create_facility" id="create_facility" class="btn btn-primary mb-2">
         <i class="feather icon-plus mr-25"></i>
         {{ trans('admin.create') }}
@@ -89,22 +89,22 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }, searchable: false, orderable: false
                 },
-                { data: 'image_path', name: 'image_path',
+                { data: 'icon_path',
                     render: function(data, type, full, meta) {
                         return "<img src=" + data + " width='50px' class='img-thumbnail' />";
                     }, orderable: false , searchable: false
                 },
-                { data: 'name', name: 'name' },
-                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
-                { data: 'active', name: 'status',
+                { data: 'name' },
+                { data: 'created_at', format: 'M/D/YYYY' },
+                { data: 'enabled',
                     render: function(data, type, full, meta) {
                         var text = data ? "{{ trans('admin.active') }}" : "{{ trans('admin.inactive') }}";
                         var color = data ? "success" : "danger"; 
                         return "<div class='badge badge-" +color+ "'>"+ text +"</div>";
                     }, orderable: false , searchable: false
                 },
-                { data: 'active', name: 'status' },
-                { data: 'action', name: 'action', orderable: false }
+                { data: 'enabled' },
+                { data: 'action', orderable: false }
             ], "columnDefs": [ {
                 "targets": 5,
                 render: function (data, type, row, meta){

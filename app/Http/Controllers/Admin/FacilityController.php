@@ -19,13 +19,13 @@ class FacilityController extends Controller
         if (request()->ajax()) {
             return datatables()->of($facilities)
                 ->addColumn('action', function ($data) {
-                    if (auth()->user()->hasPermission('update_facilities')) {
+                    if (auth()->user()->hasPermission('facilities_update')) {
                         $button = '<a type="button" title="Edit" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon"><i class="fa fa-edit"></i></a>';
                     } else {
                         $button = '<a type="button" title="Edit" name="edit" id="' . $data->id . '" class="edit btn btn-sm btn-icon disabled"><i class="fa fa-edit"></i></a>';
                     }
                     $button .= '&nbsp;&nbsp;';
-                    if (auth()->user()->hasPermission('delete_facilities')) {
+                    if (auth()->user()->hasPermission('facilities_delete')) {
                         $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon"><i class="fa fa-trash"></i></a>';
                     } else {
                         $button .= '<a type="button" title="Delete" name="delete" id="' . $data->id . '" class="delete btn btn-sm btn-icon disabled"><i class="fa fa-trash"></i></a>';
@@ -41,12 +41,11 @@ class FacilityController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'enabled' => 'required',
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
 
         foreach (config('translatable.locales') as $locale) {
-            $rules += [$locale . '.name' => 'required|unique:facility_translations,name'];
+            $rules += [$locale . '.name' => 'required|unique:facility_translations, name'];
         }
 
         $error = Validator::make($request->all(), $rules);
@@ -98,7 +97,7 @@ class FacilityController extends Controller
                 ->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })
-                ->save(public_path('uploads/facility_images/' . $request->image->hashName()));
+                ->save(public_path('images/facilities/' . $request->image->hashName()));
             $request_data['image'] = $request->image->hashName();
         }
 

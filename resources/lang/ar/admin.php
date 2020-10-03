@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'teacher_title'             => 'المعلم',
+    'sitename'                  => 'المعلم',
     'back_home'                 => 'العودة إلى الصفحة الرئيسية',
     'page_not_found'            => 'الصفحة غير موجودة',
     'internal_server_error'     => 'خطأ في الخادم الداخلي',
