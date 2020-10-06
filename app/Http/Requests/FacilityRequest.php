@@ -14,8 +14,16 @@ class FacilityRequest extends FormRequest
     public function rules()
     {
         return [
-            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'enabled' => 'required',
+            'enabled'   => 'required',
+            'icon'      => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'enabled.required' => 'A ststus is required',
+            'icon.image' => 'That is not an icon!'
         ];
     }
 }

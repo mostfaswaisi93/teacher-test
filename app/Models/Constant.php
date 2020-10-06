@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Model;
 
-class Constant extends Model
+class Constant extends BaseModel
 {
     use Translatable;
-    protected $table = 'constants';
-    protected $guarded = [];
+    protected $table    = 'constants';
+    protected $guarded  = [];
     public $translatedAttributes = ['name'];
 }

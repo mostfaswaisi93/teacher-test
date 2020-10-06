@@ -17,7 +17,6 @@ class GenderController extends Controller
 
         $request->validate($rules);
         $request_data = $request->all();
-
         Gender::create($request_data);
     }
 }

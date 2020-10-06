@@ -17,7 +17,6 @@ class ConstantController extends Controller
 
         $request->validate($rules);
         $request_data = $request->all();
-
         Constant::create($request_data);
     }
 }

@@ -75,6 +75,7 @@
 <script type="text/javascript">
     var status = '';
     $(document).ready(function(){
+
         // DataTable
         $('#data-table').DataTable({
             processing: true,
@@ -89,22 +90,22 @@
                         return meta.row + meta.settings._iDisplayStart + 1;
                     }, searchable: false, orderable: false
                 },
-                { data: 'icon_path',
+                { data: 'icon_path', name: 'icon_path',
                     render: function(data, type, full, meta) {
-                        return "<img src=" + data + " width='50px' class='img-thumbnail' />";
+                        return "<img src=" + data + " width='50px' height='50px' class='img-thumbnail' />";
                     }, orderable: false , searchable: false
                 },
-                { data: 'name' },
-                { data: 'created_at', format: 'M/D/YYYY' },
-                { data: 'enabled',
+                { data: 'name', name: 'name' },
+                { data: 'created_at', name: 'created_at', format: 'M/D/YYYY' },
+                { data: 'enabled', name: 'enabled',
                     render: function(data, type, full, meta) {
                         var text = data ? "{{ trans('admin.active') }}" : "{{ trans('admin.inactive') }}";
                         var color = data ? "success" : "danger"; 
                         return "<div class='badge badge-" +color+ "'>"+ text +"</div>";
                     }, orderable: false , searchable: false
                 },
-                { data: 'enabled' },
-                { data: 'action', orderable: false }
+                { data: 'enabled', name: 'enabled' },
+                { data: 'action', name: 'action', orderable: false }
             ], "columnDefs": [ {
                 "targets": 5,
                 render: function (data, type, row, meta){
@@ -123,6 +124,7 @@
                 url: getDataTableLanguage()
             }
         });
+
         // Open Modal
         $('#create_facility').click(function(){
             $('.modal-title').text("{{ trans('admin.create_facility') }}");
@@ -132,76 +134,78 @@
             $('#facilityModal').modal('show');
         });
 
-    $('#facilityForm').on('submit', function(event){
-        event.preventDefault();
-        if($('#action').val() == 'Add')
-        {
-            $.ajax({
-                url:"{{ route('admin.facilities.store') }}",
-                method:"POST",
-                data: new FormData(this),
-                contentType: false,
-                cache:false,
-                processData: false,
-                dataType:"json",
-                success:function(data)
-                {
+        // Add
+        $('#facilityForm').on('submit', function(event){
+            event.preventDefault();
+            if($('#action').val() == 'Add')
+            {
+                $.ajax({
+                    url:"{{ route('admin.facilities.store') }}",
+                    method:"POST",
+                    data: new FormData(this),
+                    contentType: false,
+                    cache:false,
+                    processData: false,
+                    dataType:"json",
+                    success:function(data)
+                    {
+                        var html = '';
+                        if(data.errors)
+                    {
+                        html = '<div class="alert alert-danger">';
+                        for(var count = 0; count < data.errors.length; count++)
+                            {
+                                html += '<p>' + data.errors[count] + '</p>';
+                            }
+                        html += '</div>';
+                    }
+                    if(data.success)
+                    {
+                        $('#facilityForm')[0].reset();
+                        $('#data-table').DataTable().ajax.reload();
+                        $('#facilityModal').modal('hide');
+                        toastr.success('Added Done!', 'Success!');
+                    }
+                        $('#form_result').html(html);
+                    }
+                });
+            }
+            if($('#action').val() == "Edit")
+            {
+                $.ajax({
+                    url:"{{ route('admin.facilities.update') }}",
+                    method:"POST",
+                    data:new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData: false,
+                    dataType:"json",
+                    success:function(data)
+                    {
                     var html = '';
                     if(data.errors)
-                {
-                    html = '<div class="alert alert-danger">';
-                    for(var count = 0; count < data.errors.length; count++)
-                        {
-                            html += '<p>' + data.errors[count] + '</p>';
-                        }
-                    html += '</div>';
-                }
-                if(data.success)
-                {
-                    $('#facilityForm')[0].reset();
-                    $('#data-table').DataTable().ajax.reload();
-                    $('#facilityModal').modal('hide');
-                    toastr.success('Added Done!', 'Success!');
-                }
-                    $('#form_result').html(html);
-                }
-            });
-        }
-        if($('#action').val() == "Edit")
-        {
-            $.ajax({
-                url:"{{ route('admin.facilities.update') }}",
-                method:"POST",
-                data:new FormData(this),
-                contentType: false,
-                cache: false,
-                processData: false,
-                dataType:"json",
-                success:function(data)
-                {
-                    var html = '';
-                    if(data.errors)
-                {
-                    html = '<div class="alert alert-danger">';
+                    {
+                        html = '<div class="alert alert-danger">';
                     for(var count = 0; count < data.errors.length; count++)
                     {
                         html += '<p>' + data.errors[count] + '</p>';
                     }
-                    html += '</div>';
-                }
-                if(data.success)
-                {
-                    $('#facilityForm')[0].reset();
-                    $('#data-table').DataTable().ajax.reload();
-                    $('#facilityModal').modal('hide');
-                    toastr.success('Edited Done!', 'Success!');
-                }
-                    $('#form_result').html(html);
-                }
+                        html += '</div>';
+                    }
+                    if(data.success)
+                    {
+                        $('#facilityForm')[0].reset();
+                        $('#data-table').DataTable().ajax.reload();
+                        $('#facilityModal').modal('hide');
+                        toastr.success('Edited Done!', 'Success!');
+                    }
+                        $('#form_result').html(html);
+                    }
                 });
             }
         });
 
+        // Edit
         $(document).on('click', '.edit', function(){
             var id = $(this).attr('id');
             $('#form_result').html('');
@@ -219,7 +223,6 @@
                 }
             });
         });
-    
     });
 
     // Delete

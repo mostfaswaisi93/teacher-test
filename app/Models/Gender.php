@@ -3,12 +3,11 @@
 namespace App\Models;
 
 use Astrotomic\Translatable\Translatable;
-use Illuminate\Database\Eloquent\Model;
 
-class Gender extends Model
+class Gender extends BaseModel
 {
     use Translatable;
-    protected $table = 'genders';
-    protected $guarded = [];
+    protected $table    = 'genders';
+    protected $guarded  = [];
     public $translatedAttributes = ['name'];
 }
