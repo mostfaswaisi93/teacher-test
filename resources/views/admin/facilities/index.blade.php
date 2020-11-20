@@ -130,6 +130,8 @@
             $('.modal-title').text("{{ trans('admin.create_facility') }}");
             $('#action_button').val("Add");
             $('#facilityForm').trigger("reset");
+            $('.icon-preview').attr('src', '');
+            $('#form_result').html('');
             $('#action').val("Add");
             $('#facilityModal').modal('show');
         });
@@ -139,18 +141,19 @@
             event.preventDefault();
             if($('#action').val() == 'Add')
             {
+                var formData = new FormData(this);
                 $.ajax({
-                    url:"{{ route('admin.facilities.store') }}",
-                    method:"POST",
-                    data: new FormData(this),
+                    url: "{{ route('admin.facilities.store') }}",
+                    method: "POST",
+                    data: formData,
                     contentType: false,
-                    cache:false,
+                    cache: false,
                     processData: false,
-                    dataType:"json",
-                    success:function(data)
+                    dataType: "json",
+                    success: function(data)
                     {
                         var html = '';
-                        if(data.errors)
+                    if(data.errors)
                     {
                         html = '<div class="alert alert-danger">';
                         for(var count = 0; count < data.errors.length; count++)
@@ -172,17 +175,18 @@
             }
             if($('#action').val() == "Edit")
             {
+                var formData = new FormData(this);
                 $.ajax({
-                    url:"{{ route('admin.facilities.update') }}",
-                    method:"POST",
-                    data:new FormData(this),
+                    url: "{{ route('admin.facilities.update') }}",
+                    method: "POST",
+                    data: formData,
                     contentType: false,
                     cache: false,
                     processData: false,
-                    dataType:"json",
-                    success:function(data)
+                    dataType: "json",
+                    success: function(data)
                     {
-                    var html = '';
+                        var html = '';
                     if(data.errors)
                     {
                         html = '<div class="alert alert-danger">';
