@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Facility;
+use App\Traits\GlobalTrait;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +14,8 @@ use Validator;
 
 class FacilityController extends Controller
 {
+    use GlobalTrait;
+
     public function index()
     {
         $facilities = Facility::get();
@@ -54,14 +57,10 @@ class FacilityController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }
 
-        $image = $request->file('image');
-
-        $new_name = rand() . '.' . $image->getClientOriginalExtension();
-
-        $image->move(public_path('images'), $new_name);
+        $fileName = $this->saveImage('facilities', $request->icon);
 
         $form_data = array(
-            'icon' => $new_name,
+            'icon' => $fileName,
             'enabled' => $request->enabled,
         );
 

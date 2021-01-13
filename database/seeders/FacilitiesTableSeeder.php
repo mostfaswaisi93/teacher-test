@@ -12,52 +12,52 @@ class FacilitiesTableSeeder extends Seeder
         Facility::create([
             'ar' => ['name' => 'ملعب كرة قدم'],
             'en' => ['name' => 'Football Stadium'],
-            'icon' => public_path('uploads/facilities/football-stadium.jpg')
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
         Facility::create([
             'ar' => ['name' => 'مسبح'],
             'en' => ['name' => 'Swimming Pool'],
-            'icon' => ''
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
         Facility::create([
             'ar' => ['name' => 'ملعب كرة سلة'],
             'en' => ['name' => 'Basketball Stadium'],
-            'icon' => ''
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
         Facility::create([
             'ar' => ['name' => 'مختبر حاسب آلي'],
             'en' => ['name' => 'Computer Lab'],
-            'icon' => ''
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
         Facility::create([
             'ar' => ['name' => 'مختبر علمي'],
             'en' => ['name' => 'Scientific Lab'],
-            'icon' => ''
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
         Facility::create([
             'ar' => ['name' => 'مكتبة'],
             'en' => ['name' => 'Library'],
-            'icon' => ''
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
         Facility::create([
             'ar' => ['name' => 'معمل فنية'],
             'en' => ['name' => 'Technical Lab'],
-            'icon' => ''
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
         Facility::create([
             'ar' => ['name' => 'عيادة طبية'],
             'en' => ['name' => 'Medical Clinic'],
-            'icon' => ''
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
         Facility::create([
             'ar' => ['name' => 'غرفة خدمات مكتبية'],
             'en' => ['name' => 'Office Services Room'],
-            'icon' => ''
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
         Facility::create([
             'ar' => ['name' => 'مسرح'],
             'en' => ['name' => 'Stage'],
-            'icon' => ''
+            'icon' => 'images/facilities/football-stadium.jpg'
         ]);
     }
 }
